@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Antic+Didone&family=Bigelow+Rules&family=Poppins:wght@300;400;600&family=Bodoni+Moda&family=Dela+Gothic+One&display=swap");
+/* 
+font-family: Poppins, sans-serif (text)
+font-family: Antic Didone, serif (text)
+font-family: Bigelow Rules, cursive; (logo)
+font-family: Bodoni Moda, serif; (recipe of world)
+font-family: Dela Gothic One, cursive; (heavy font) */
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
