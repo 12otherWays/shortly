@@ -1,3 +1,4 @@
+import Footer from "@/app/components/Footer";
 import "../styles/globals.css";
 import { Box, ThemeProvider, createTheme } from "@mui/material";
 
@@ -20,12 +21,11 @@ function MyApp({ Component, pageProps }) {
       <ThemeProvider theme={theme}>
         <Box
           sx={{
-            backgroundColor: "#ecede8",
+            backgroundColor: "#FBF6F4",
           }}
         >
-          {/* <Header /> */}
           <Component {...pageProps} />
-          {/* <Footer /> */}
+          <Footer />
         </Box>
       </ThemeProvider>
     </>
