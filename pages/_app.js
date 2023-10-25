@@ -1,6 +1,7 @@
 import Footer from "@/app/components/Footer";
 import "../styles/globals.css";
 import { Box, ThemeProvider, createTheme } from "@mui/material";
+import Header from "@/app/components/Header";
 
 const theme = createTheme({
   breakpoints: {
@@ -24,6 +25,7 @@ function MyApp({ Component, pageProps }) {
             backgroundColor: "#FBF6F4",
           }}
         >
+          <Header />
           <Component {...pageProps} />
           <Footer />
         </Box>
