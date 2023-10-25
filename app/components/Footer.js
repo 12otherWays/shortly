@@ -1,6 +1,8 @@
 import { Box, Divider, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Image from "next/image";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import TwitterIcon from "@mui/icons-material/Twitter";
 
 const OutterDiv = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -16,18 +18,18 @@ const InnerDiv = styled(Box)(({ theme }) => ({
 const Heading = styled(Typography)(({ theme }) => ({
   fontSize: "16px",
   display: "flex",
-  fontWeight: 400,
+  fontWeight: 600,
   marginBottom: "16px",
   textTransform: "capitalize",
-  fontFamily: "'Montserrat', sans-serif",
+  fontFamily: "'Poppins', sans-serif",
 }));
 const Text = styled(Typography)(({ theme }) => ({
   color: "#79808C",
   textTransform: "capitalize",
-  fontWeight: 400,
+  fontWeight: 300,
   display: "flex",
   letterSpacing: "0.3px",
-  fontFamily: "'Montserrat', sans-serif",
+  fontFamily: "'Poppins', sans-serif",
   "&:hover": {
     color: "black",
   },
@@ -58,12 +60,33 @@ function Footer() {
                 {company_name}
               </Typography>
             </Box>
-            <Text sx={{ color: "black", textTransform: "none" }}>
+            <Text
+              sx={{
+                color: "black",
+                textTransform: "none",
+                fontFamily: "'Montserrat', sans-serif",
+              }}
+            >
               The email platform for SaaS
             </Text>
-            <Box>
-              <Image />
-              <Image />
+            <Box sx={{ display: "flex", gap: "10px" }}>
+              <LinkedInIcon
+                sx={{
+                  color: "#A5ACB7",
+                  "&:hover": {
+                    color: "#0073B1",
+                  },
+                }}
+              />
+
+              <TwitterIcon
+                sx={{
+                  color: "#A5ACB7",
+                  "&:hover": {
+                    color: "#1C96E9",
+                  },
+                }}
+              />
             </Box>
           </Box>
           <Box
