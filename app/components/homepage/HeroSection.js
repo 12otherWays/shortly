@@ -1,4 +1,10 @@
-import { Box, Button, InputAdornment, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  IconButton,
+  InputAdornment,
+  Typography,
+} from "@mui/material";
 import { styled } from "@mui/material/styles";
 import BoltIcon from "@mui/icons-material/Bolt";
 import QrCode2Icon from "@mui/icons-material/QrCode2";
@@ -9,6 +15,8 @@ import Arrow from "../../../public/arrow.svg";
 import Image from "next/image";
 import FiberManualRecordSharpIcon from "@mui/icons-material/FiberManualRecordSharp";
 import TextureSharpIcon from "@mui/icons-material/TextureSharp";
+import Tooltip from "@mui/material/Tooltip";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 
 const OutterDiv = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -205,7 +213,6 @@ function HeroSection() {
                   fontFamily: "'Poppins', sans-serif",
                   color: "white",
                   backgroundColor: "#4265F0",
-                  borderRadius: 0,
                   "&:hover": {
                     color: "#FE7D62",
                     backgroundColor: "rgba(66, 101, 240, 0.4)",
@@ -231,7 +238,6 @@ function HeroSection() {
                   fontFamily: "'Poppins', sans-serif",
                   color: "white",
                   color: "#4265F0",
-                  borderRadius: 0,
                   "&:hover": {
                     backgroundColor: "rgba(230, 112, 87, 0.1)",
                   },
@@ -240,13 +246,15 @@ function HeroSection() {
                 QR code
               </Button>
             </Box>
-
             <TextField
               id="outlined-size-small"
               defaultValue="Small"
               size="small"
               hiddenLabel
-              sx={{ width: "100%", borderRadius: "0" }}
+              sx={{
+                width: "100%",
+                // borderRadius: "0"
+              }}
               InputLabelProps={{
                 sx: {
                   color: "#003566",
@@ -256,11 +264,11 @@ function HeroSection() {
               InputProps={{
                 sx: {
                   "& fieldset": {
-                    borderRadius: 0,
+                    // borderRadius: 0,
                   },
                   "&:focus-within fieldset, &:focus-visible fieldset": {
                     border: "1px solid #FE7D62!important",
-                    borderRadius: 0,
+                    // borderRadius: 0,
                   },
                 },
                 endAdornment: (
@@ -275,16 +283,21 @@ function HeroSection() {
                       cursor: "pointer",
                       transition: "all 200ms ease-in-out",
                       "&:hover": {
-                        transform: "scale(1.2)",
+                        transform: "scale(1.08)",
                       },
                     }}
                   >
-                    <ArrowForwardIcon
+                    <IconButton
+                      type="button"
                       sx={{
+                        p: "10px",
                         color: "#FE7D62",
                         fontSize: "14px",
                       }}
-                    />
+                      aria-label="search"
+                    >
+                      <ArrowForwardIcon />
+                    </IconButton>
                   </InputAdornment>
                 ),
               }}
@@ -295,7 +308,87 @@ function HeroSection() {
                 },
               }}
             />
+            {/* out put link and qr code */}
+            {/* <TextField
+              id="outlined-size-small"
+              size="small"
+              hiddenLabel
+              sx={{
+                width: "100%",
+                // borderRadius: "0"
+              }}
+              InputLabelProps={{
+                sx: {
+                  color: "#003566",
+                  textTransform: "capitalize",
+                },
+              }}
+              InputProps={{
+                sx: {
+                  "& fieldset": {
+                    // borderRadius: 0,
+                  },
+                  "&:focus-within fieldset, &:focus-visible fieldset": {
+                    border: "1px solid #FE7D62!important",
+                    // borderRadius: 0,
+                  },
+                },
+                endAdornment: (
+                  <InputAdornment
+                    position="end"
+                    sx={{
+                      height: "30px",
+                      width: "20px",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      cursor: "pointer",
+                      transition: "all 200ms ease-in-out",
+                      "&:hover": {
+                        transform: "scale(1.08)",
+                      },
+                    }}
+                  >
+                    <Tooltip title="Copy">
+                      <IconButton
+                        type="button"
+                        sx={{
+                          p: "10px",
+                          color: "#FE7D62",
+                          fontSize: "14px",
+                        }}
+                        aria-label="search"
+                      >
+                        <ContentCopyIcon />
+                      </IconButton>
+                    </Tooltip>
+                  </InputAdornment>
+                ),
+              }}
+              inputProps={{
+                sx: {
+                  color: "#FE7D62",
+                  fontSize: "14px",
+                },
+              }}
+            /> */}
           </Box>
+          {/* <Box
+            sx={{
+              position: "absolute",
+              top: "85%",
+              left: "50%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "220px",
+              transform: "translate(-50%, -50%)",
+              border: "1px solid #FBF6F4",
+              aspectRatio: 1,
+            }}
+          >
+          </Box> */}
         </Box>
       </InnerDiv>
     </OutterDiv>
