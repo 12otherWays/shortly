@@ -1,5 +1,5 @@
 import Footer from "@/app/components/Footer";
-import "../styles/globals.css";
+import "../styles/global.css";
 import { Box, ThemeProvider, createTheme } from "@mui/material";
 import Header from "@/app/components/Header";
 
