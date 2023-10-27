@@ -38,7 +38,7 @@ function HeroSection() {
           {/* h1 and h2 */}
           <Box
             sx={{
-              top: "35%",
+              top: "25%",
               left: "50%",
               display: "flex",
               flexDirection: "column",
@@ -82,7 +82,7 @@ function HeroSection() {
               position: "absolute",
               display: "inline-block",
               fontSize: "94px",
-              top: "60%",
+              top: "50%",
               left: "90%",
               color: "#FE7D62",
               transform: "translate(-50%, -50%) ",
@@ -93,7 +93,7 @@ function HeroSection() {
               position: "absolute",
               display: "inline-block",
               fontSize: "64px",
-              top: "20%",
+              top: "10%",
               left: "80%",
               color: "#4265F0",
               transform: "translate(-50%, -50%) rotate(30deg)",
@@ -104,7 +104,7 @@ function HeroSection() {
               position: "absolute",
               display: "inline-block",
               fontSize: "64px",
-              top: "20%",
+              top: "10%",
               left: "20%",
               color: "#FE7D62",
               transform: "translate(-50%, -50%) rotate(300deg)",
@@ -116,8 +116,8 @@ function HeroSection() {
             width={40}
             style={{
               position: "absolute",
-              top: "59%",
-              left: "28%",
+              top: "49%",
+              left: "26%",
             }}
           />
           <FiberManualRecordSharpIcon
@@ -125,7 +125,7 @@ function HeroSection() {
               position: "absolute",
               display: "inline-block",
               fontSize: "14px",
-              top: "80%",
+              top: "70%",
               left: "20%",
               color: "#A1A1A1",
               transform: "translate(-50%, -50%) rotate(300deg)",
@@ -137,7 +137,7 @@ function HeroSection() {
               display: "inline-block",
               fontSize: "54px",
               filter: "blur(2px)",
-              top: "70%",
+              top: "60%",
               left: "10%",
               color: "#4265F0",
               transform: "translate(-50%, -50%) rotate(300deg)",
@@ -148,8 +148,8 @@ function HeroSection() {
           <Box
             sx={{
               position: "absolute",
-              top: "57%",
-              left: "25%",
+              top: "47%",
+              left: "23%",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -182,18 +182,26 @@ function HeroSection() {
           <Box
             sx={{
               position: "absolute",
-              top: "60%",
+              top: "52%",
+              // top: "58%",
               left: "50%",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
               transform: "translate(-50%, -50%)",
-              width: "280px",
+              width: "392px",
               gap: "10px",
             }}
           >
-            <Box sx={{ width: "100%" }}>
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+              }}
+            >
               <Button
                 variant="contained"
                 startIcon={
@@ -205,12 +213,15 @@ function HeroSection() {
                   />
                 }
                 sx={{
-                  width: "50%",
-                  fontSize: "14px",
-                  letterSpacing: "1px",
+                  fontSize: "18px",
+                  borderRadius: "32px",
+                  height: "60px",
+                  padding: "16px 0",
                   textTransform: "capitalize",
-                  borderColor: "#4265F0",
                   fontFamily: "'Poppins', sans-serif",
+                  width: "48%",
+                  letterSpacing: "1px",
+                  borderColor: "#4265F0",
                   color: "white",
                   backgroundColor: "#4265F0",
                   "&:hover": {
@@ -222,6 +233,7 @@ function HeroSection() {
                 Short link
               </Button>
               <Button
+                variant="outlined"
                 startIcon={
                   <QrCode2Icon
                     sx={{
@@ -230,8 +242,13 @@ function HeroSection() {
                   />
                 }
                 sx={{
-                  width: "50%",
-                  fontSize: "14px",
+                  fontSize: "18px",
+                  borderRadius: "32px",
+                  height: "60px",
+                  padding: "16px 0",
+                  textTransform: "capitalize",
+                  fontFamily: "'Poppins', sans-serif",
+                  width: "48%",
                   letterSpacing: "1px",
                   textTransform: "capitalize",
                   borderColor: "#4265F0",
@@ -239,7 +256,7 @@ function HeroSection() {
                   color: "white",
                   color: "#4265F0",
                   "&:hover": {
-                    backgroundColor: "rgba(230, 112, 87, 0.1)",
+                    borderColor: "white",
                   },
                 }}
               >
@@ -249,9 +266,9 @@ function HeroSection() {
             <TextField
               id="outlined-size-small"
               defaultValue="Small"
-              size="small"
               hiddenLabel
               sx={{
+                height: "60px",
                 width: "100%",
                 // borderRadius: "0"
               }}
@@ -304,17 +321,17 @@ function HeroSection() {
               inputProps={{
                 sx: {
                   color: "#FE7D62",
-                  fontSize: "14px",
+                  fontSize: "18px",
                 },
               }}
             />
             {/* out put link and qr code */}
             {/* <TextField
               id="outlined-size-small"
-              size="small"
               hiddenLabel
               sx={{
                 width: "100%",
+                height: "60px",
                 // borderRadius: "0"
               }}
               InputLabelProps={{
@@ -376,7 +393,7 @@ function HeroSection() {
           {/* <Box
             sx={{
               position: "absolute",
-              top: "85%",
+              top: "80%",
               left: "50%",
               display: "flex",
               flexDirection: "column",
@@ -387,8 +404,7 @@ function HeroSection() {
               border: "1px solid #FBF6F4",
               aspectRatio: 1,
             }}
-          >
-          </Box> */}
+          ></Box> */}
         </Box>
       </InnerDiv>
     </OutterDiv>
