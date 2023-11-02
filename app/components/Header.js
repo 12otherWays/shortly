@@ -1,6 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import React from "react";
 import { styled } from "@mui/material/styles";
+import { useRouter } from "next/router";
 
 const OutterDiv = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -13,7 +14,6 @@ const OutterDiv = styled(Box)(({ theme }) => ({
   backgroundColor: "rgba(249, 250, 251, 0.3)",
   zIndex: "1000",
 }));
-
 const InnerDiv = styled(Box)(({ theme }) => ({
   display: "flex",
   width: "85%",
@@ -37,6 +37,7 @@ const Text = styled(Button)(({ theme }) => ({
 }));
 
 function Header() {
+  const router = useRouter();
   return (
     <OutterDiv>
       <InnerDiv>
@@ -67,6 +68,7 @@ function Header() {
           </Box>
           <Box sx={{ display: "flex", flexDirection: "row", gap: "15px" }}>
             <Button
+              onClick={() => router.push("/login")}
               variant="outlined"
               sx={{
                 height: "30px",
@@ -85,6 +87,7 @@ function Header() {
               log in
             </Button>
             <Button
+              onClick={() => router.push("/signup")}
               variant="contained"
               sx={{
                 height: "30px",
@@ -98,7 +101,7 @@ function Header() {
                 },
               }}
             >
-              start
+              start up
             </Button>
           </Box>
         </Box>
