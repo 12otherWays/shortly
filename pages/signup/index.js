@@ -180,7 +180,7 @@ function index() {
                       },
                     }}
                   >
-                    Sign up with Google
+                    Continue with Email
                   </Button>
                   <Box>
                     <Typography
@@ -414,6 +414,7 @@ function index() {
                         "& .MuiSvgIcon-root": {
                           fontSize: 28,
                           borderRadius: "0",
+                          color: "#FE7D62",
                         },
                         borderRadius: "0",
                         padding: 0,
