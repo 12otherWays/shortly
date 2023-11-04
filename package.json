@@ -16,8 +16,6 @@
     "@mui/icons-material": "^5.14.15",
     "@mui/material": "^5.14.15",
     "@mui/styled-engine-sc": "^6.0.0-alpha.3",
-    "chart.js": "^4.4.0",
-    "framer-motion": "^10.16.4",
     "axios": "^1.5.1",
     "moment": "^2.29.4",
     "chart.js": "^4.4.0",
