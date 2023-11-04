@@ -92,6 +92,7 @@ function SignUpSection() {
             width={40}
             height={40}
             style={{ position: "absolute", top: "-20px", right: "-35px" }}
+            alt="ui icon"
           />
         </Box>
       </InnerDiv>

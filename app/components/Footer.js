@@ -49,7 +49,7 @@ function Footer() {
         >
           <Box sx={{ width: "50%" }}>
             <Box sx={{ display: "flex" }}>
-              <Image />
+              {/* <Image /> */}
               <Typography
                 sx={{
                   textTransform: "capitalize",

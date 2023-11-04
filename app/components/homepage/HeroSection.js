@@ -1,4 +1,5 @@
 import {
+  Alert,
   Box,
   Button,
   IconButton,
@@ -17,6 +18,9 @@ import FiberManualRecordSharpIcon from "@mui/icons-material/FiberManualRecordSha
 import TextureSharpIcon from "@mui/icons-material/TextureSharp";
 import Tooltip from "@mui/material/Tooltip";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import { useEffect, useState } from "react";
+import { getShortlyLinkApi } from "@/utils/Api";
+import QRCode from "qrcode";
 
 const OutterDiv = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -29,8 +33,88 @@ const InnerDiv = styled(Box)(({ theme }) => ({
   width: "85%",
   justifyContent: "space-between",
 }));
+const MainButton = styled(Button)(({ theme }) => ({
+  fontSize: "18px",
+  borderRadius: "32px",
+  height: "60px",
+  padding: "16px 0",
+  textTransform: "capitalize",
+  fontFamily: "'Poppins', sans-serif",
+  width: "48%",
+  letterSpacing: "1px",
+}));
 
 function HeroSection() {
+  const [url, setUrl] = useState("");
+  const [linkOrCode, setLinkOrCode] = useState("link");
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("some error");
+  const [focus, setFocus] = useState(null);
+  const [btnClicked, setBtnClicked] = useState(false);
+  const [response, setResponse] = useState(null);
+  const [qrCode, setQrCode] = useState(null);
+
+  const changePreference = (str) => {
+    setLinkOrCode(str);
+  };
+  const handleFocus = () => {
+    setFocus(true);
+  };
+  const handleFocusOut = () => {
+    setFocus(false);
+    setShowAlert(false);
+  };
+  const isUrlValid = (string) => {
+    try {
+      new URL(string);
+      return true;
+    } catch (err) {
+      return false;
+    }
+  };
+  const submitLink = (str) => {
+    if (focus || btnClicked) {
+      if (isUrlValid(str)) {
+        if (linkOrCode === "link") {
+          getShortlyFxn(str);
+        } else if (linkOrCode === "code") {
+          callForQRcode(str);
+        }
+      } else if (url.length <= 0) {
+        setAlertMessage("URL is Missing");
+        setShowAlert(true);
+      } else if (!isUrlValid(str)) {
+        setAlertMessage("URL is wrong");
+        setShowAlert(true);
+      }
+    }
+  };
+  const getShortlyFxn = async (str) => {
+    const data = { url: `${str}` };
+    const res = await getShortlyLinkApi(data);
+    if (res.status === "success") {
+      console.log(res, res.data.shortId);
+      setResponse(`https://www.shortly/${res.data.shortId}.com`);
+    }
+  };
+  const generateQR = async (text) => {
+    try {
+      let data = await QRCode.toDataURL(text);
+      return data;
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  const callForQRcode = async (str) => {
+    let da = await generateQR(str);
+    setQrCode(da);
+  };
+  useEffect(() => {
+    if (focus) {
+      submitLink(url);
+    }
+  }, [btnClicked]);
+
   return (
     <OutterDiv>
       <InnerDiv>
@@ -112,6 +196,7 @@ function HeroSection() {
           />
           <Image
             src={Arrow}
+            alt="arrow icon"
             height={40}
             width={40}
             style={{
@@ -182,8 +267,7 @@ function HeroSection() {
           <Box
             sx={{
               position: "absolute",
-              top: "52%",
-              // top: "58%",
+              top: `${linkOrCode === "link" ? 58 : 52}%`,
               left: "50%",
               display: "flex",
               flexDirection: "column",
@@ -202,8 +286,9 @@ function HeroSection() {
                 justifyContent: "space-between",
               }}
             >
-              <Button
-                variant="contained"
+              <MainButton
+                onClick={() => changePreference("link")}
+                variant={linkOrCode === "link" ? "contained" : "outlined"}
                 startIcon={
                   <LinkIcon
                     sx={{
@@ -212,28 +297,31 @@ function HeroSection() {
                     }}
                   />
                 }
-                sx={{
-                  fontSize: "18px",
-                  borderRadius: "32px",
-                  height: "60px",
-                  padding: "16px 0",
-                  textTransform: "capitalize",
-                  fontFamily: "'Poppins', sans-serif",
-                  width: "48%",
-                  letterSpacing: "1px",
-                  borderColor: "#4265F0",
-                  color: "white",
-                  backgroundColor: "#4265F0",
-                  "&:hover": {
-                    color: "#FE7D62",
-                    backgroundColor: "rgba(66, 101, 240, 0.4)",
-                  },
-                }}
+                sx={
+                  linkOrCode === "link"
+                    ? {
+                        borderColor: "#4265F0",
+                        color: "white",
+                        backgroundColor: "#4265F0",
+                        "&:hover": {
+                          color: "#FE7D62",
+                          backgroundColor: "rgba(66, 101, 240, 0.4)",
+                        },
+                      }
+                    : {
+                        color: "#4265F0",
+                        borderColor: "#4265F0",
+                        "&:hover": {
+                          borderColor: "white",
+                        },
+                      }
+                }
               >
                 Short link
-              </Button>
-              <Button
-                variant="outlined"
+              </MainButton>
+              <MainButton
+                onClick={() => changePreference("code")}
+                variant={linkOrCode === "code" ? "contained" : "outlined"}
                 startIcon={
                   <QrCode2Icon
                     sx={{
@@ -241,133 +329,87 @@ function HeroSection() {
                     }}
                   />
                 }
-                sx={{
-                  fontSize: "18px",
-                  borderRadius: "32px",
-                  height: "60px",
-                  padding: "16px 0",
-                  textTransform: "capitalize",
-                  fontFamily: "'Poppins', sans-serif",
-                  width: "48%",
-                  letterSpacing: "1px",
-                  textTransform: "capitalize",
-                  borderColor: "#4265F0",
-                  fontFamily: "'Poppins', sans-serif",
-                  color: "white",
-                  color: "#4265F0",
-                  "&:hover": {
-                    borderColor: "white",
-                  },
-                }}
+                sx={
+                  linkOrCode === "code"
+                    ? {
+                        borderColor: "#4265F0",
+                        color: "white",
+                        backgroundColor: "#4265F0",
+                        "&:hover": {
+                          color: "#FE7D62",
+                          backgroundColor: "rgba(66, 101, 240, 0.4)",
+                        },
+                      }
+                    : {
+                        color: "#4265F0",
+                        borderColor: "#4265F0",
+                        "&:hover": {
+                          borderColor: "white",
+                        },
+                      }
+                }
               >
                 QR code
-              </Button>
+              </MainButton>
             </Box>
-            <TextField
-              id="outlined-size-small"
-              defaultValue="Small"
-              hiddenLabel
-              sx={{
-                height: "60px",
-                width: "100%",
-                // borderRadius: "0"
+            <form
+              style={{ width: "100%" }}
+              onSubmit={(e) => {
+                e.preventDefault();
+                submitLink(url);
               }}
-              InputLabelProps={{
-                sx: {
-                  color: "#003566",
-                  textTransform: "capitalize",
-                },
-              }}
-              InputProps={{
-                sx: {
-                  "& fieldset": {
-                    // borderRadius: 0,
+            >
+              <TextField
+                id="outlined-size-small"
+                onFocus={() => handleFocus()}
+                onBlur={() => handleFocusOut()}
+                value={url}
+                onChange={(e) => {
+                  setShowAlert(false);
+                  setUrl(e.target.value);
+                }}
+                hiddenLabel
+                sx={{
+                  height: "60px",
+                  width: "100%",
+                }}
+                InputLabelProps={{
+                  sx: {
+                    color: "#003566",
+                    textTransform: "capitalize",
                   },
-                  "&:focus-within fieldset, &:focus-visible fieldset": {
-                    border: "1px solid #FE7D62!important",
-                    // borderRadius: 0,
+                }}
+                InputProps={{
+                  sx: {
+                    "& fieldset": {
+                      // borderRadius: 0,
+                    },
+                    "&:focus-within fieldset, &:focus-visible fieldset": {
+                      border: "1px solid #FE7D62!important",
+                      // borderRadius: 0,
+                    },
                   },
-                },
-                endAdornment: (
-                  <InputAdornment
-                    position="end"
-                    sx={{
-                      height: "30px",
-                      width: "20px",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      cursor: "pointer",
-                      transition: "all 200ms ease-in-out",
-                      "&:hover": {
-                        transform: "scale(1.08)",
-                      },
-                    }}
-                  >
-                    <IconButton
-                      type="button"
+                  endAdornment: (
+                    <InputAdornment
+                      position="end"
                       sx={{
-                        p: "10px",
-                        color: "#FE7D62",
-                        fontSize: "14px",
+                        height: "30px",
+                        width: "20px",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        cursor: "pointer",
+                        transition: "all 200ms ease-in-out",
+                        "&:hover": {
+                          transform: "scale(1.08)",
+                        },
                       }}
-                      aria-label="search"
                     >
-                      <ArrowForwardIcon />
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-              inputProps={{
-                sx: {
-                  color: "#FE7D62",
-                  fontSize: "18px",
-                },
-              }}
-            />
-            {/* out put link and qr code */}
-            {/* <TextField
-              id="outlined-size-small"
-              hiddenLabel
-              sx={{
-                width: "100%",
-                height: "60px",
-                // borderRadius: "0"
-              }}
-              InputLabelProps={{
-                sx: {
-                  color: "#003566",
-                  textTransform: "capitalize",
-                },
-              }}
-              InputProps={{
-                sx: {
-                  "& fieldset": {
-                    // borderRadius: 0,
-                  },
-                  "&:focus-within fieldset, &:focus-visible fieldset": {
-                    border: "1px solid #FE7D62!important",
-                    // borderRadius: 0,
-                  },
-                },
-                endAdornment: (
-                  <InputAdornment
-                    position="end"
-                    sx={{
-                      height: "30px",
-                      width: "20px",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      cursor: "pointer",
-                      transition: "all 200ms ease-in-out",
-                      "&:hover": {
-                        transform: "scale(1.08)",
-                      },
-                    }}
-                  >
-                    <Tooltip title="Copy">
                       <IconButton
+                        onClick={() => {
+                          setBtnClicked(true);
+                          submitLink(url);
+                        }}
                         type="button"
                         sx={{
                           p: "10px",
@@ -376,36 +418,125 @@ function HeroSection() {
                         }}
                         aria-label="search"
                       >
-                        <ContentCopyIcon />
+                        <ArrowForwardIcon />
                       </IconButton>
-                    </Tooltip>
-                  </InputAdornment>
-                ),
-              }}
-              inputProps={{
-                sx: {
-                  color: "#FE7D62",
-                  fontSize: "14px",
-                },
-              }}
-            /> */}
+                    </InputAdornment>
+                  ),
+                }}
+                inputProps={{
+                  sx: {
+                    color: "#FE7D62",
+                    fontSize: "18px",
+                  },
+                }}
+              />
+            </form>
+
+            {/* out put link and qr code */}
+            {response && linkOrCode === "link" && (
+              <TextField
+                id="outlined-size-small"
+                hiddenLabel
+                value={response}
+                sx={{
+                  width: "100%",
+                  height: "60px",
+                  // borderRadius: "0"
+                }}
+                InputLabelProps={{
+                  sx: {
+                    color: "#003566",
+                    textTransform: "capitalize",
+                  },
+                }}
+                InputProps={{
+                  sx: {
+                    "& fieldset": {
+                      // borderRadius: 0,
+                    },
+                    "&:focus-within fieldset, &:focus-visible fieldset": {
+                      border: "1px solid #FE7D62!important",
+                      // borderRadius: 0,
+                    },
+                  },
+                  endAdornment: (
+                    <InputAdornment
+                      position="end"
+                      sx={{
+                        height: "30px",
+                        width: "20px",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        cursor: "pointer",
+                        transition: "all 200ms ease-in-out",
+                        "&:hover": {
+                          transform: "scale(1.08)",
+                        },
+                      }}
+                    >
+                      <Tooltip title="Copy">
+                        <IconButton
+                          onClick={() => {
+                            navigator.clipboard.writeText(response);
+                          }}
+                          type="button"
+                          sx={{
+                            p: "10px",
+                            color: "#FE7D62",
+                            fontSize: "14px",
+                          }}
+                          aria-label="search"
+                        >
+                          <ContentCopyIcon />
+                        </IconButton>
+                      </Tooltip>
+                    </InputAdornment>
+                  ),
+                }}
+                inputProps={{
+                  sx: {
+                    color: "#FE7D62",
+                    fontSize: "18px",
+                  },
+                }}
+              />
+            )}
           </Box>
-          {/* <Box
-            sx={{
-              position: "absolute",
-              top: "80%",
-              left: "50%",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "220px",
-              transform: "translate(-50%, -50%)",
-              border: "1px solid #FBF6F4",
-              aspectRatio: 1,
-            }}
-          ></Box> */}
+          {qrCode && linkOrCode === "code" && (
+            <Box
+              sx={{
+                position: "absolute",
+                top: "80%",
+                left: "50%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "220px",
+                transform: "translate(-50%, -50%)",
+                border: "1px solid #FBF6F4",
+                aspectRatio: 1,
+              }}
+            >
+              <img src={qrCode} style={{ width: "100%", height: "100%" }} />
+            </Box>
+          )}
         </Box>
+        {showAlert && (
+          <Alert
+            severity="error"
+            style={{
+              position: "absolute",
+              bottom: "10px",
+              right: "0px",
+              width: "fit-content",
+              padding: "10px 20px",
+            }}
+          >
+            {alertMessage}
+          </Alert>
+        )}
       </InnerDiv>
     </OutterDiv>
   );
