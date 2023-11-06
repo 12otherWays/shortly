@@ -60,7 +60,7 @@ function MapCard() {
           <Text>World Map</Text>
           <Text>see details</Text>
         </TextDiv>
-        <Image src={worldMap} width={20} height={40} />
+        <Image src={worldMap} width={20} height={40} alt={"world map"} />
       </Box>
       <Box sx={{ borderLeft: "thin solid #E0E0E0" }}>
         <TextDiv>

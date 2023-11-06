@@ -49,7 +49,7 @@ function PhoneCard() {
       animate="rest"
       whileHover="move"
     >
-      <Image src={mobile} width={20} height={40} />
+      <Image src={mobile} width={20} height={40} alt="UI mobile image" />
       <Text variants={mobileTextMotion}>device compatible</Text>
     </Card>
   );
