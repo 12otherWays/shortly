@@ -3,19 +3,9 @@ import "../styles/global.css";
 import { Box, ThemeProvider, createTheme } from "@mui/material";
 import Header from "@/app/components/Header";
 import { useRouter } from "next/router";
+import { myTheme } from "@/utils/Theme";
 
-const theme = createTheme({
-  breakpoints: {
-    values: {
-      xs: 0,
-      xs500: 500,
-      sm: 600,
-      md: 900,
-      lg: 1200,
-      xl: 1536,
-    },
-  },
-});
+const theme = createTheme(myTheme);
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
