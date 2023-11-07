@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Typography, useMediaQuery } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import asset1 from "../../../public/asset1.svg";
 import asset2 from "../../../public/asset2.svg";
@@ -21,21 +21,32 @@ const InnerDiv = styled(Box)(({ theme }) => ({
   display: "flex",
   width: "85%",
   justifyContent: "center",
+  [theme.breakpoints.down("md")]: {
+    padding: "140px 10px",
+    width: "100%",
+  },
+  [theme.breakpoints.up("lg")]: {
+    width: "1200px",
+  },
+}));
+const ParentDiv = styled(Box)(({ theme }) => ({
+  width: "70%",
+  display: "flex",
+  gap: "10px",
+  flexDirection: "column",
+  position: "relative",
+  [theme.breakpoints.down("md")]: {
+    width: "100%",
+  },
 }));
 
 function SignUpSection() {
+  const nineWidth = useMediaQuery("(min-width:900px)");
+
   return (
     <OutterDiv>
       <InnerDiv>
-        <Box
-          sx={{
-            width: "70%",
-            display: "flex",
-            gap: "10px",
-            flexDirection: "column",
-            position: "relative",
-          }}
-        >
+        <ParentDiv>
           <Typography
             sx={{
               fontSize: "36px",
@@ -87,14 +98,16 @@ function SignUpSection() {
               Book a tour
             </Button>
           </Box>
-          <Image
-            src={asset3}
-            width={40}
-            height={40}
-            style={{ position: "absolute", top: "-20px", right: "-35px" }}
-            alt="ui icon"
-          />
-        </Box>
+          {nineWidth && (
+            <Image
+              src={asset3}
+              width={40}
+              height={40}
+              style={{ position: "absolute", top: "-20px", right: "-35px" }}
+              alt="ui icon"
+            />
+          )}
+        </ParentDiv>
       </InnerDiv>
     </OutterDiv>
   );
