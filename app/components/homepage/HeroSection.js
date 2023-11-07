@@ -21,6 +21,7 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { useEffect, useState } from "react";
 import { getShortlyLinkApi } from "@/utils/Api";
 import QRCode from "qrcode";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const OutterDiv = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -32,6 +33,14 @@ const InnerDiv = styled(Box)(({ theme }) => ({
   display: "flex",
   width: "85%",
   justifyContent: "space-between",
+  [theme.breakpoints.down("md")]: {
+    padding: "10px 20px",
+    paddingTop: "80px",
+    width: "100%",
+  },
+  [theme.breakpoints.up("lg")]: {
+    width: "1200px",
+  },
 }));
 const MainButton = styled(Button)(({ theme }) => ({
   fontSize: "18px",
@@ -43,6 +52,63 @@ const MainButton = styled(Button)(({ theme }) => ({
   width: "48%",
   letterSpacing: "1px",
 }));
+const ParentBox = styled(Box)(({ theme }) => ({
+  height: "652px",
+  position: "relative",
+  width: "100%",
+  [theme.breakpoints.down("md")]: {
+    height: "720px",
+  },
+}));
+const MainBox = styled(Box)(({ theme }) => ({
+  top: "25%",
+  left: "50%",
+  display: "flex",
+  flexDirection: "column",
+  position: "absolute",
+  transform: "translate(-50%, -50%)",
+  [theme.breakpoints.down("md")]: {
+    top: "20%",
+  },
+}));
+const MainText = styled(Typography)(({ theme }) => ({
+  display: "inline-block",
+  fontSize: "72px",
+  textTransform: "capitalize",
+  fontWeight: "900",
+  fontFamily: "'Montserrat', sans-serif",
+  lineHeight: "72px",
+  textAlign: "center",
+  [theme.breakpoints.down("lg")]: {
+    fontSize: "64px",
+    lineHeight: "64px",
+  },
+  [theme.breakpoints.down("md")]: {
+    fontSize: "48px",
+    lineHeight: "48px",
+  },
+}));
+
+const SecondText = styled(Typography)(({ theme }) => ({
+  display: "inline-block",
+  textAlign: "center",
+  fontSize: "18px",
+  textTransform: "capitalize",
+  fontWeight: "500",
+  fontFamily: "'Montserrat', sans-serif",
+  lineHeight: "64px",
+  color: "black",
+  [theme.breakpoints.down("md")]: {
+    fontSize: "16px",
+  },
+}));
+
+const ButtonDiv = styled(Box)(({ theme }) => ({
+  width: "100%",
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-between",
+}));
 
 function HeroSection() {
   const [url, setUrl] = useState("");
@@ -53,6 +119,28 @@ function HeroSection() {
   const [btnClicked, setBtnClicked] = useState(false);
   const [response, setResponse] = useState(null);
   const [qrCode, setQrCode] = useState(null);
+  const thousandWidth = useMediaQuery("(min-width:1000px)");
+  const matches = useMediaQuery("(min-width:800px)");
+  const sixWidth = useMediaQuery("(min-width:600px)");
+
+  const InputOutputDiv = styled(Box)(({ theme }) => ({
+    left: "50%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    transform: "translate(-50%, -50%)",
+    width: "392px",
+    gap: "10px",
+    position: "absolute",
+    [theme.breakpoints.down("md")]: {
+      top: `${linkOrCode === "link" && response ? 48 : 44}%`,
+    },
+    [theme.breakpoints.down("sm")]: {
+      top: `${linkOrCode === "link" && response ? 50 : 46}%`,
+      width: "95%",
+    },
+  }));
 
   const changePreference = (str) => {
     setLinkOrCode(str);
@@ -118,47 +206,12 @@ function HeroSection() {
   return (
     <OutterDiv>
       <InnerDiv>
-        <Box sx={{ height: "652px", position: "relative", width: "100%" }}>
+        <ParentBox>
           {/* h1 and h2 */}
-          <Box
-            sx={{
-              top: "25%",
-              left: "50%",
-              display: "flex",
-              flexDirection: "column",
-              position: "absolute",
-              transform: "translate(-50%, -50%)",
-            }}
-          >
-            <Typography
-              sx={{
-                display: "inline-block",
-                fontSize: "72px",
-                textTransform: "capitalize",
-                fontWeight: "900",
-                fontFamily: "'Montserrat', sans-serif",
-                lineHeight: "72px",
-                textAlign: "center",
-              }}
-            >
-              Shrink any URL
-            </Typography>
-            <Typography
-              sx={{
-                display: "inline-block",
-                textAlign: "center",
-                fontSize: "18px",
-                textTransform: "capitalize",
-                fontWeight: "500",
-                fontFamily: "'Montserrat', sans-serif",
-                lineHeight: "64px",
-                // color: "#A1A1A1",
-                color: "black",
-              }}
-            >
-              Shrink. Share. Shine.
-            </Typography>
-          </Box>
+          <MainBox>
+            <MainText>Shrink any URL</MainText>
+            <SecondText>Shrink. Share. Shine.</SecondText>
+          </MainBox>
 
           {/* other icon */}
           <QrCode2Icon
@@ -166,7 +219,7 @@ function HeroSection() {
               position: "absolute",
               display: "inline-block",
               fontSize: "94px",
-              top: "50%",
+              top: `${matches ? 50 : 25}%`,
               left: "90%",
               color: "#FE7D62",
               transform: "translate(-50%, -50%) ",
@@ -177,8 +230,8 @@ function HeroSection() {
               position: "absolute",
               display: "inline-block",
               fontSize: "64px",
-              top: "10%",
-              left: "80%",
+              top: `${matches ? 10 : 5}%`,
+              left: `${matches ? 80 : 90}%`,
               color: "#4265F0",
               transform: "translate(-50%, -50%) rotate(30deg)",
             }}
@@ -188,104 +241,97 @@ function HeroSection() {
               position: "absolute",
               display: "inline-block",
               fontSize: "64px",
-              top: "10%",
-              left: "20%",
+              top: `${matches ? 10 : 5}%`,
+              left: `${matches ? 20 : 10}%`,
               color: "#FE7D62",
               transform: "translate(-50%, -50%) rotate(300deg)",
             }}
           />
-          <Image
-            src={Arrow}
-            alt="arrow icon"
-            height={40}
-            width={40}
-            style={{
-              position: "absolute",
-              top: "49%",
-              left: "26%",
-            }}
-          />
-          <FiberManualRecordSharpIcon
-            sx={{
-              position: "absolute",
-              display: "inline-block",
-              fontSize: "14px",
-              top: "70%",
-              left: "20%",
-              color: "#A1A1A1",
-              transform: "translate(-50%, -50%) rotate(300deg)",
-            }}
-          />
-          <TextureSharpIcon
-            sx={{
-              position: "absolute",
-              display: "inline-block",
-              fontSize: "54px",
-              filter: "blur(2px)",
-              top: "60%",
-              left: "10%",
-              color: "#4265F0",
-              transform: "translate(-50%, -50%) rotate(300deg)",
-            }}
-          />
+          {sixWidth && (
+            <Image
+              src={Arrow}
+              alt="arrow icon"
+              height={40}
+              width={40}
+              style={{
+                position: "absolute",
+                top: `${matches ? 49 : 32}%`,
+                left: `${thousandWidth ? 26 : 6}%`,
+              }}
+            />
+          )}
+          {sixWidth && (
+            <FiberManualRecordSharpIcon
+              sx={{
+                position: "absolute",
+                display: "inline-block",
+                fontSize: "14px",
+                top: "70%",
+                left: "20%",
+                color: "#A1A1A1",
+                transform: "translate(-50%, -50%) rotate(300deg)",
+              }}
+            />
+          )}
+          {sixWidth && (
+            <TextureSharpIcon
+              sx={{
+                position: "absolute",
+                display: "inline-block",
+                fontSize: "54px",
+                filter: "blur(2px)",
+                top: "60%",
+                left: "10%",
+                color: "#4265F0",
+                transform: "translate(-50%, -50%) rotate(300deg)",
+              }}
+            />
+          )}
 
           {/* free text */}
-          <Box
-            sx={{
-              position: "absolute",
-              top: "47%",
-              left: "23%",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              transform: "translate(-50%, -50%) rotate(330deg)",
-            }}
-          >
-            <Typography
-              sx={{
-                fontSize: "24px",
-                color: "#A1A1A1",
-                letterSpacing: "1px",
-                fontFamily: "'Poppins', sans-serif",
-              }}
-            >
-              it's
-            </Typography>
-            <Typography
-              sx={{
-                fontSize: "24px",
-                color: "#A1A1A1",
-                letterSpacing: "1px",
-                fontFamily: "'Poppins', sans-serif",
-              }}
-            >
-              free
-            </Typography>
-          </Box>
-          {/* input and output */}
-          <Box
-            sx={{
-              position: "absolute",
-              top: `${linkOrCode === "link" ? 58 : 52}%`,
-              left: "50%",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              transform: "translate(-50%, -50%)",
-              width: "392px",
-              gap: "10px",
-            }}
-          >
+          {sixWidth && (
             <Box
               sx={{
-                width: "100%",
+                position: "absolute",
+                top: `${matches ? 47 : 30}%`,
+                left: `${thousandWidth ? 23 : 3}%`,
                 display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-between",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                transform: "translate(-50%, -50%) rotate(330deg)",
               }}
             >
+              <Typography
+                sx={{
+                  fontSize: "24px",
+                  color: "#A1A1A1",
+                  letterSpacing: "1px",
+                  fontFamily: "'Poppins', sans-serif",
+                }}
+              >
+                it's
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: "24px",
+                  color: "#A1A1A1",
+                  letterSpacing: "1px",
+                  fontFamily: "'Poppins', sans-serif",
+                }}
+              >
+                free
+              </Typography>
+            </Box>
+          )}
+
+          {/* input and output */}
+          <InputOutputDiv
+            sx={{
+              top: `${linkOrCode === "link" && response ? 58 : 52}%`,
+            }}
+          >
+            <ButtonDiv>
               <MainButton
                 onClick={() => changePreference("link")}
                 variant={linkOrCode === "link" ? "contained" : "outlined"}
@@ -351,7 +397,7 @@ function HeroSection() {
               >
                 QR code
               </MainButton>
-            </Box>
+            </ButtonDiv>
             <form
               style={{ width: "100%" }}
               onSubmit={(e) => {
@@ -502,7 +548,7 @@ function HeroSection() {
                 }}
               />
             )}
-          </Box>
+          </InputOutputDiv>
           {qrCode && linkOrCode === "code" && (
             <Box
               sx={{
@@ -522,7 +568,7 @@ function HeroSection() {
               <img src={qrCode} style={{ width: "100%", height: "100%" }} />
             </Box>
           )}
-        </Box>
+        </ParentBox>
         {showAlert && (
           <Alert
             severity="error"
