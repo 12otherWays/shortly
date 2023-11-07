@@ -1,7 +1,10 @@
-import { Box, Button, Typography } from "@mui/material";
-import React from "react";
+import { Box, Button, Drawer, Typography } from "@mui/material";
+import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 import { useRouter } from "next/router";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 
 const OutterDiv = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -12,7 +15,7 @@ const OutterDiv = styled(Box)(({ theme }) => ({
   width: "100%",
   backdropFilter: "blur(12px)",
   backgroundColor: "rgba(249, 250, 251, 0.3)",
-  zIndex: "1000",
+  zIndex: 1000,
 }));
 const InnerDiv = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -20,6 +23,50 @@ const InnerDiv = styled(Box)(({ theme }) => ({
   justifyContent: "space-between",
   padding: "10px 80px",
   alignItems: "center",
+  [theme.breakpoints.down("md")]: {
+    padding: "10px 40px",
+    width: "95%",
+  },
+  [theme.breakpoints.up("lg")]: {
+    width: "1200px",
+  },
+}));
+const ParentDiv = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: "10px",
+  [theme.breakpoints.up("md")]: {
+    gap: "15px",
+  },
+  [theme.breakpoints.up("lg")]: {
+    gap: "30px",
+  },
+}));
+const LinkDiv = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: "10px",
+  [theme.breakpoints.up("md")]: {
+    gap: "15px",
+  },
+  [theme.breakpoints.up("lg")]: {
+    gap: "30px",
+  },
+}));
+const ButtonDiv = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  gap: "10px",
+  [theme.breakpoints.up("md")]: {
+    gap: "15px",
+  },
+  [theme.breakpoints.up("lg")]: {
+    gap: "30px",
+  },
 }));
 const Text = styled(Button)(({ theme }) => ({
   color: "#79808C",
@@ -38,73 +85,164 @@ const Text = styled(Button)(({ theme }) => ({
 
 function Header() {
   const router = useRouter();
+  const matches = useMediaQuery("(min-width:800px)");
+  const [openDrawer, setOpenDrawer] = useState(false);
+  const [clicked, setClicked] = useState(false);
   return (
     <OutterDiv>
       <InnerDiv>
         <Box>
           <Typography>company name</Typography>
         </Box>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            gap: "20px",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              gap: "30px",
-              justifyContent: "center",
-              alignItems: "center",
+        {!matches &&
+          (!clicked ? (
+            <MenuIcon
+              onClick={() => {
+                setOpenDrawer(true);
+                setClicked(true);
+              }}
+            />
+          ) : (
+            <CloseIcon
+              onClick={() => {
+                setOpenDrawer(false);
+                setClicked(false);
+              }}
+            />
+          ))}
+        {matches ? (
+          <ParentDiv>
+            <LinkDiv>
+              <Text>docs</Text>
+              <Text>pricing</Text>
+              <Text>guide</Text>
+            </LinkDiv>
+            <ButtonDiv>
+              <Button
+                onClick={() => router.push("/login")}
+                variant="outlined"
+                sx={{
+                  height: "30px",
+                  fontSize: "14px",
+                  letterSpacing: "1px",
+                  textTransform: "capitalize",
+                  borderColor: "#FE7D62",
+                  fontFamily: "'Poppins', sans-serif",
+                  color: "#FE7D62",
+                  "&:hover": {
+                    borderColor: "#e67057",
+                    backgroundColor: "rgba(230, 112, 87, 0.1)",
+                  },
+                }}
+              >
+                log in
+              </Button>
+              <Button
+                onClick={() => router.push("/signup")}
+                variant="contained"
+                sx={{
+                  height: "30px",
+                  letterSpacing: "1px",
+                  fontSize: "14px",
+                  fontFamily: "'Poppins', sans-serif",
+                  textTransform: "capitalize",
+                  backgroundColor: "#FE7D62",
+                  "&:hover": {
+                    backgroundColor: "#e67057",
+                  },
+                }}
+              >
+                start up
+              </Button>
+            </ButtonDiv>
+          </ParentDiv>
+        ) : (
+          <Drawer
+            sx={{ zIndex: 999 }}
+            anchor={"top"}
+            open={openDrawer}
+            onClose={() => {
+              setOpenDrawer(false);
             }}
           >
-            <Text>docs</Text>
-            <Text>pricing</Text>
-            <Text>guide</Text>
-          </Box>
-          <Box sx={{ display: "flex", flexDirection: "row", gap: "15px" }}>
-            <Button
-              onClick={() => router.push("/login")}
-              variant="outlined"
+            <Box
               sx={{
-                height: "30px",
-                fontSize: "14px",
-                letterSpacing: "1px",
-                textTransform: "capitalize",
-                borderColor: "#FE7D62",
-                fontFamily: "'Poppins', sans-serif",
-                color: "#FE7D62",
-                "&:hover": {
-                  borderColor: "#e67057",
-                  backgroundColor: "rgba(230, 112, 87, 0.1)",
-                },
+                padding: "80px 40px 40px 40px",
+                display: "flex",
+                flexDirection: "column",
+                textAlign: "start",
+                gap: "30px",
               }}
             >
-              log in
-            </Button>
-            <Button
-              onClick={() => router.push("/signup")}
-              variant="contained"
-              sx={{
-                height: "30px",
-                letterSpacing: "1px",
-                fontSize: "14px",
-                fontFamily: "'Poppins', sans-serif",
-                textTransform: "capitalize",
-                backgroundColor: "#FE7D62",
-                "&:hover": {
-                  backgroundColor: "#e67057",
-                },
-              }}
-            >
-              start up
-            </Button>
-          </Box>
-        </Box>
+              <Text
+                sx={{
+                  fontSize: "20px",
+                  display: "flex",
+                  height: "40px",
+                  alignItems: "center",
+                }}
+              >
+                docs
+              </Text>
+              <Text
+                sx={{
+                  fontSize: "20px",
+                  display: "flex",
+                  alignItems: "center",
+                  height: "40px",
+                }}
+              >
+                pricing
+              </Text>
+              <Text
+                sx={{
+                  fontSize: "20px",
+                  display: "flex",
+                  alignItems: "center",
+                  height: "40px",
+                }}
+              >
+                guide
+              </Text>
+              <Button
+                onClick={() => router.push("/login")}
+                variant="outlined"
+                sx={{
+                  height: "60px",
+                  fontSize: "20px",
+                  letterSpacing: "1px",
+                  textTransform: "capitalize",
+                  borderColor: "#FE7D62",
+                  fontFamily: "'Poppins', sans-serif",
+                  color: "#FE7D62",
+                  "&:hover": {
+                    borderColor: "#e67057",
+                    backgroundColor: "rgba(230, 112, 87, 0.1)",
+                  },
+                }}
+              >
+                log in
+              </Button>
+              <Button
+                onClick={() => router.push("/signup")}
+                variant="contained"
+                sx={{
+                  height: "60px",
+                  letterSpacing: "1px",
+                  fontSize: "20px",
+                  fontFamily: "'Poppins', sans-serif",
+                  textTransform: "capitalize",
+                  backgroundColor: "#FE7D62",
+                  "&:hover": {
+                    backgroundColor: "#e67057",
+                  },
+                }}
+              >
+                start up
+              </Button>
+            </Box>
+          </Drawer>
+        )}
       </InnerDiv>
     </OutterDiv>
   );
