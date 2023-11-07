@@ -33,13 +33,13 @@ const InnerDiv = styled(Box)(({ theme }) => ({
   display: "flex",
   width: "85%",
   justifyContent: "space-between",
+  [theme.breakpoints.up("lg")]: {
+    width: "1200px",
+  },
   [theme.breakpoints.down("md")]: {
     padding: "10px 20px",
     paddingTop: "80px",
     width: "100%",
-  },
-  [theme.breakpoints.up("lg")]: {
-    width: "1200px",
   },
 }));
 const MainButton = styled(Button)(({ theme }) => ({
@@ -51,6 +51,9 @@ const MainButton = styled(Button)(({ theme }) => ({
   fontFamily: "'Poppins', sans-serif",
   width: "48%",
   letterSpacing: "1px",
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "14px",
+  },
 }));
 const ParentBox = styled(Box)(({ theme }) => ({
   height: "652px",
