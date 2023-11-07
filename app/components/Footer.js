@@ -14,6 +14,37 @@ const InnerDiv = styled(Box)(({ theme }) => ({
   display: "flex",
   width: "85%",
   flexDirection: "column",
+  [theme.breakpoints.down("sm")]: {
+    padding: "80px 10px",
+    width: "95%",
+  },
+  [theme.breakpoints.up("lg")]: {
+    width: "1200px",
+  },
+}));
+const ParentDiv = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  marginBottom: "24px",
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column",
+  },
+}));
+const LeftDiv = styled(Box)(({ theme }) => ({
+  width: "50%",
+  [theme.breakpoints.down("sm")]: {
+    width: "100%",
+  },
+}));
+const RightDiv = styled(Box)(({ theme }) => ({
+  width: "50%",
+  display: "flex",
+  justifyContent: "flex-end",
+  [theme.breakpoints.down("sm")]: {
+    width: "100%",
+    paddingTop: "40px",
+    justifyContent: "flex-start",
+  },
 }));
 const Heading = styled(Typography)(({ theme }) => ({
   fontSize: "16px",
@@ -40,14 +71,8 @@ function Footer() {
   return (
     <OutterDiv>
       <InnerDiv>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            marginBottom: "24px",
-          }}
-        >
-          <Box sx={{ width: "50%" }}>
+        <ParentDiv>
+          <LeftDiv>
             <Box sx={{ display: "flex" }}>
               {/* <Image /> */}
               <Typography
@@ -88,10 +113,8 @@ function Footer() {
                 }}
               />
             </Box>
-          </Box>
-          <Box
-            sx={{ width: "50%", display: "flex", justifyContent: "flex-end" }}
-          >
+          </LeftDiv>
+          <RightDiv>
             <Box sx={{ display: "inline-block" }}>
               <Heading>company</Heading>
               <Text sx={{ padding: "4px 0" }}>about us</Text>
@@ -99,8 +122,8 @@ function Footer() {
               <Text sx={{ padding: "4px 0" }}>careers</Text>
               <Text sx={{ padding: "4px 0" }}>credits</Text>
             </Box>
-          </Box>
-        </Box>
+          </RightDiv>
+        </ParentDiv>
 
         <Divider />
         <Box
