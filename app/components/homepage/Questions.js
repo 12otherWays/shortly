@@ -16,6 +16,48 @@ const InnerDiv = styled(Box)(({ theme }) => ({
   display: "flex",
   width: "85%",
   justifyContent: "space-between",
+  [theme.breakpoints.down("md")]: {
+    padding: "80px 40px",
+    flexDirection: "column",
+    width: "100%",
+  },
+  [theme.breakpoints.down("sm")]: {
+    padding: "80px 10px",
+    width: "100%",
+  },
+  [theme.breakpoints.up("lg")]: {
+    width: "1200px",
+  },
+}));
+
+const LeftDiv = styled(Box)(({ theme }) => ({
+  width: "40%",
+  [theme.breakpoints.down("md")]: {
+    width: "100%",
+  },
+}));
+const RightDiv = styled(Box)(({ theme }) => ({
+  width: "58%",
+  [theme.breakpoints.down("md")]: {
+    marginTop: "60px",
+    width: "100%",
+  },
+}));
+const MainText = styled(Typography)(({ theme }) => ({
+  fontSize: "64px",
+  textTransform: "capitalize",
+  fontWeight: "900",
+  fontFamily: "'Montserrat', sans-serif",
+  lineHeight: "64px",
+  marginBottom: "24px",
+  [theme.breakpoints.down("lg")]: {
+    fontSize: "48px",
+    lineHeight: "48px",
+  },
+  [theme.breakpoints.down("md")]: {
+    fontSize: "36px",
+    lineHeight: "36px",
+  },
 }));
 
 function Questions() {
@@ -27,19 +69,8 @@ function Questions() {
   return (
     <OutterDiv>
       <InnerDiv>
-        <Box sx={{ width: "40%" }}>
-          <Typography
-            sx={{
-              fontSize: "64px",
-              textTransform: "capitalize",
-              fontWeight: "900",
-              fontFamily: "'Montserrat', sans-serif",
-              lineHeight: "64px",
-              marginBottom: "24px",
-            }}
-          >
-            frequently asked question
-          </Typography>
+        <LeftDiv>
+          <MainText>frequently asked question</MainText>
           <Typography
             sx={{
               fontSize: "18px",
@@ -52,8 +83,8 @@ function Questions() {
             Everything you need to know about our Charge email outreach tool and
             billing.
           </Typography>
-        </Box>
-        <Box sx={{ width: "58%" }}>
+        </LeftDiv>
+        <RightDiv>
           <Accordion
             sx={{
               backgroundColor: "transparent",
@@ -316,7 +347,7 @@ function Questions() {
               </Typography>
             </AccordionDetails>
           </Accordion>
-        </Box>
+        </RightDiv>
       </InnerDiv>
     </OutterDiv>
   );
