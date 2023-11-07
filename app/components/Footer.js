@@ -14,9 +14,13 @@ const InnerDiv = styled(Box)(({ theme }) => ({
   display: "flex",
   width: "85%",
   flexDirection: "column",
+  [theme.breakpoints.down("md")]: {
+    padding: "80px 40px",
+    width: "90%",
+  },
   [theme.breakpoints.down("sm")]: {
     padding: "80px 10px",
-    width: "95%",
+    width: "90%",
   },
   [theme.breakpoints.up("lg")]: {
     width: "1200px",
