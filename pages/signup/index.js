@@ -38,7 +38,7 @@ const ParentDiv = styled(Box)(({ theme }) => ({
   maxWidth: "536px",
   width: "100%",
   padding: "30px 60px 0",
-  marginTop: "50px",
+  marginTop: "30px",
   [theme.breakpoints.down("sm")]: {
     padding: "30px",
   },
@@ -124,7 +124,7 @@ function index() {
                   sx={{
                     backgroundColor: "black",
                     borderRadius: "50px",
-                    padding: `${sixWidth ? "15px 100px" : "15px 60px"}`,
+                    padding: `${sixWidth ? "15px 100px" : "15px 20px"}`,
                     display: "flex",
                     gap: "15px",
                     fontSize: "14px",
@@ -173,7 +173,7 @@ function index() {
                     border: "thin solid rgba(0,0,0,0.15)",
                     backgroundColor: "white",
                     borderRadius: "50px",
-                    padding: `${sixWidth ? "15px 100px" : "15px 60px"}`,
+                    padding: `${sixWidth ? "15px 100px" : "15px 20px"}`,
                     display: "flex",
                     gap: "15px",
                     fontSize: "14px",
@@ -468,7 +468,7 @@ function index() {
                   sx={{
                     backgroundColor: "black",
                     borderRadius: "50px",
-                    padding: `${sixWidth ? "15px 100px" : "15px 60px"}`,
+                    padding: `${sixWidth ? "15px 100px" : "15px 20px"}`,
                     display: "flex",
                     gap: "15px",
                     fontSize: "14px",

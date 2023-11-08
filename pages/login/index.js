@@ -114,7 +114,7 @@ function index() {
                   variant="contained"
                   sx={{
                     borderRadius: "50px",
-                    padding: `${sixWidth ? "15px 100px" : "15px 60px"}`,
+                    padding: `${sixWidth ? "15px 100px" : "15px 20px"}`,
                     display: "flex",
                     gap: "15px",
                     fontSize: "14px",
@@ -260,7 +260,7 @@ function index() {
                     marginTop: "30px",
                     backgroundColor: "black",
                     borderRadius: "50px",
-                    padding: `${sixWidth ? "15px 100px" : "15px 60px"}`,
+                    padding: `${sixWidth ? "15px 100px" : "15px 20px"}`,
                     display: "flex",
                     gap: "15px",
                     fontSize: "14px",
