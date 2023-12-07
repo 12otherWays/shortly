@@ -82,6 +82,23 @@ const Text = styled(Button)(({ theme }) => ({
     color: "black",
   },
 }));
+const MainText = styled(Typography)(({ theme }) => ({
+  display: "inline-block",
+  fontSize: "24px",
+  textTransform: "capitalize",
+  fontWeight: "900",
+  fontFamily: "'Montserrat', sans-serif",
+  lineHeight: "24px",
+  textAlign: "center",
+  [theme.breakpoints.down("lg")]: {
+    fontSize: "20px",
+    lineHeight: "20px",
+  },
+  [theme.breakpoints.down("md")]: {
+    fontSize: "16px",
+    lineHeight: "16px",
+  },
+}));
 
 function Header() {
   const router = useRouter();
@@ -92,7 +109,7 @@ function Header() {
     <OutterDiv>
       <InnerDiv>
         <Box>
-          <Typography>company name</Typography>
+          <MainText>Shortly</MainText>
         </Box>
         {!matches &&
           (!clicked ? (

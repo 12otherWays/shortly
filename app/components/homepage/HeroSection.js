@@ -184,7 +184,6 @@ function HeroSection() {
     const data = { url: `${str}` };
     const res = await getShortlyLinkApi(data);
     if (res.status === "success") {
-      console.log(res, res.data.shortId);
       setResponse(`https://www.shortly/${res.data.shortId}.com`);
     }
   };
