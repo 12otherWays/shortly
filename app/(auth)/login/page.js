@@ -1,24 +1,24 @@
+"use client";
 import {
-  Avatar,
   Box,
   Button,
   Divider,
   TextField,
   Typography,
-  useMediaQuery,
+  useMediaQuery
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Image from "next/image";
 import { useState } from "react";
-import Google from "../../public/google.png";
-import { useRouter } from "next/router";
+import Google from "@/public/google.png";
+import { useRouter } from "next/navigation";
 
 const OutterDiv = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   width: "100%",
   height: "100%",
-  backgroundColor: "white",
+  backgroundColor: "white"
 }));
 
 const InnerDiv = styled(Box)(({ theme }) => ({
@@ -26,7 +26,7 @@ const InnerDiv = styled(Box)(({ theme }) => ({
   width: "100%",
   height: "100%",
   height: "100vh",
-  alignItems: "center",
+  alignItems: "center"
 }));
 
 const ParentDiv = styled(Box)(({ theme }) => ({
@@ -36,18 +36,18 @@ const ParentDiv = styled(Box)(({ theme }) => ({
   width: "100%",
   padding: "30px 60px 0",
   [theme.breakpoints.down("sm")]: {
-    padding: "30px",
-  },
+    padding: "30px"
+  }
 }));
 
 const Text = styled(Typography)(({ theme }) => ({
   fontSize: "16px",
   fontWeight: "600",
   fontFamily: "'Poppins', sans-serif",
-  marginBottom: "8px",
+  marginBottom: "8px"
 }));
 
-function index() {
+function page() {
   const router = useRouter();
   const [next, setNext] = useState(false);
   const [checked, setChecked] = useState(false);
@@ -63,7 +63,7 @@ function index() {
           sx={{
             display: "flex",
             width: "100%",
-            justifyContent: "center",
+            justifyContent: "center"
           }}
         >
           <ParentDiv>
@@ -85,13 +85,13 @@ function index() {
                     justifyContent: "center",
                     alignItems: "center",
                     "&:hover": {
-                      borderWidth: "2.5px",
-                    },
+                      borderWidth: "2.5px"
+                    }
                   }}
                 >
                   <ArrowBackIosOutlinedIcon
                     sx={{
-                      fontSize: "20px",
+                      fontSize: "20px"
                     }}
                   />
                 </Box>
@@ -103,7 +103,7 @@ function index() {
                 fontSize: "24px",
                 fontFamily: "'Poppins', sans-serif",
                 fontWeight: "800",
-                marginBottom: "40px",
+                marginBottom: "40px"
               }}
             >
               Sign in to Shortly
@@ -126,8 +126,8 @@ function index() {
                     backgroundColor: "white",
                     "&:hover": {
                       border: "thin solid rgba(0,0,0,0.15)",
-                      backgroundColor: "white",
-                    },
+                      backgroundColor: "white"
+                    }
                   }}
                 >
                   <Image
@@ -146,7 +146,7 @@ function index() {
                     alignItems: "center",
                     textAlign: "center",
                     justifyContent: "center",
-                    margin: "30px 0 10px",
+                    margin: "30px 0 10px"
                   }}
                 >
                   <Divider sx={{ flexGrow: 1 }} />
@@ -165,33 +165,33 @@ function index() {
                     hiddenLabel
                     sx={{
                       height: "60px",
-                      width: "100%",
+                      width: "100%"
                       // borderRadius: "0"
                     }}
                     InputLabelProps={{
                       sx: {
                         color: "#003566",
-                        textTransform: "capitalize",
-                      },
+                        textTransform: "capitalize"
+                      }
                     }}
                     InputProps={{
                       sx: {
                         "& fieldset": {
                           borderColor: "#e7e7e9",
                           borderWidth: "2px",
-                          borderRadius: "12px",
+                          borderRadius: "12px"
                         },
                         "&:focus-within fieldset, &:focus-visible fieldset": {
-                          border: "2px solid #FE7D62!important",
+                          border: "2px solid #FE7D62!important"
                           // borderRadius: 0,
-                        },
-                      },
+                        }
+                      }
                     }}
                     inputProps={{
                       sx: {
                         color: "#FE7D62",
-                        fontSize: "18px",
-                      },
+                        fontSize: "18px"
+                      }
                     }}
                   />
                 </Box>
@@ -200,7 +200,7 @@ function index() {
                     sx={{
                       display: "flex",
                       flexDirection: "row",
-                      justifyContent: "space-between",
+                      justifyContent: "space-between"
                     }}
                   >
                     <Text>Password</Text>
@@ -208,7 +208,7 @@ function index() {
                       sx={{
                         textDecoration: "underline",
                         fontSize: "14px",
-                        fontWeight: "300",
+                        fontWeight: "300"
                       }}
                     >
                       Forget?
@@ -220,33 +220,33 @@ function index() {
                     hiddenLabel
                     sx={{
                       height: "60px",
-                      width: "100%",
+                      width: "100%"
                       // borderRadius: "0"
                     }}
                     InputLabelProps={{
                       sx: {
                         color: "#003566",
-                        textTransform: "capitalize",
-                      },
+                        textTransform: "capitalize"
+                      }
                     }}
                     InputProps={{
                       sx: {
                         "& fieldset": {
                           borderColor: "#e7e7e9",
                           borderWidth: "2px",
-                          borderRadius: "12px",
+                          borderRadius: "12px"
                         },
                         "&:focus-within fieldset, &:focus-visible fieldset": {
-                          border: "2px solid #FE7D62!important",
+                          border: "2px solid #FE7D62!important"
                           // borderRadius: 0,
-                        },
-                      },
+                        }
+                      }
                     }}
                     inputProps={{
                       sx: {
                         color: "#FE7D62",
-                        fontSize: "18px",
-                      },
+                        fontSize: "18px"
+                      }
                     }}
                   />
                 </Box>
@@ -269,8 +269,8 @@ function index() {
                     textTransform: "none",
                     marginBottom: "20px",
                     "&:hover": {
-                      backgroundColor: "black",
-                    },
+                      backgroundColor: "black"
+                    }
                   }}
                 >
                   Sign In
@@ -280,7 +280,7 @@ function index() {
                     sx={{
                       fontSize: "14px",
                       fontFamily: "'Poppins', sans-serif",
-                      textAlign: "center",
+                      textAlign: "center"
                     }}
                   >
                     Already have an account?{" "}
@@ -288,7 +288,7 @@ function index() {
                       onClick={() => router.push("/signup")}
                       style={{
                         textDecoration: "underline",
-                        cursor: "pointer",
+                        cursor: "pointer"
                       }}
                     >
                       Sign Up
@@ -304,4 +304,4 @@ function index() {
   );
 }
 
-export default index;
+export default page;

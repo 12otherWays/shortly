@@ -1,35 +1,33 @@
+"use client";
 import {
-  Avatar,
   Box,
   Button,
   Checkbox,
   Divider,
-  IconButton,
-  InputAdornment,
   TextField,
   Typography,
-  useMediaQuery,
+  useMediaQuery
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import Google from "../../public/google.png";
+import Google from "@/public/google.png";
 import Image from "next/image";
 import { useState } from "react";
 import ArrowBackIosOutlinedIcon from "@mui/icons-material/ArrowBackIosOutlined";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const OutterDiv = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   width: "100%",
   height: "100%",
-  backgroundColor: "white",
+  backgroundColor: "white"
 }));
 
 const InnerDiv = styled(Box)(({ theme }) => ({
   display: "flex",
   width: "100%",
   height: "100vh",
-  alignItems: "center",
+  alignItems: "center"
 }));
 
 const ParentDiv = styled(Box)(({ theme }) => ({
@@ -40,15 +38,15 @@ const ParentDiv = styled(Box)(({ theme }) => ({
   padding: "30px 60px 0",
   marginTop: "30px",
   [theme.breakpoints.down("sm")]: {
-    padding: "30px",
-  },
+    padding: "30px"
+  }
 }));
 
 const Text = styled(Typography)(({ theme }) => ({
   fontSize: "16px",
   fontWeight: "600",
   fontFamily: "'Poppins', sans-serif",
-  marginBottom: "8px",
+  marginBottom: "8px"
 }));
 
 function index() {
@@ -67,7 +65,7 @@ function index() {
           sx={{
             display: "flex",
             width: "100%",
-            justifyContent: "center",
+            justifyContent: "center"
           }}
         >
           <ParentDiv>
@@ -75,7 +73,7 @@ function index() {
               <Box
                 sx={{
                   position: "relative",
-                  paddingBottom: `${sixWidth ? 0 : 20}px`,
+                  paddingBottom: `${sixWidth ? 0 : 20}px`
                 }}
               >
                 <Box
@@ -94,13 +92,13 @@ function index() {
                     justifyContent: "center",
                     alignItems: "center",
                     "&:hover": {
-                      borderWidth: "2.5px",
-                    },
+                      borderWidth: "2.5px"
+                    }
                   }}
                 >
                   <ArrowBackIosOutlinedIcon
                     sx={{
-                      fontSize: "20px",
+                      fontSize: "20px"
                     }}
                   />
                 </Box>
@@ -112,7 +110,7 @@ function index() {
                 fontSize: "24px",
                 fontFamily: "'Poppins', sans-serif",
                 fontWeight: "800",
-                marginBottom: "40px",
+                marginBottom: "40px"
               }}
             >
               Sign up to Shortly
@@ -132,8 +130,8 @@ function index() {
                     fontWeight: "500",
                     textTransform: "none",
                     "&:hover": {
-                      backgroundColor: "black",
-                    },
+                      backgroundColor: "black"
+                    }
                   }}
                 >
                   <Image
@@ -152,7 +150,7 @@ function index() {
                     alignItems: "center",
                     textAlign: "center",
                     justifyContent: "center",
-                    margin: "30px 0",
+                    margin: "30px 0"
                   }}
                 >
                   <Divider sx={{ flexGrow: 1 }} />
@@ -183,8 +181,8 @@ function index() {
                     marginBottom: "40px",
                     "&:hover": {
                       backgroundColor: "white",
-                      border: "thin solid rgba(0,0,0,0.15)",
-                    },
+                      border: "thin solid rgba(0,0,0,0.15)"
+                    }
                   }}
                 >
                   Continue with Email
@@ -195,14 +193,14 @@ function index() {
                       fontSize: "12px",
                       marginTop: "20px",
                       fontFamily: "'Poppins', sans-serif",
-                      textAlign: "center",
+                      textAlign: "center"
                     }}
                   >
                     By creating an account you agree with our{" "}
                     <span
                       style={{
                         textDecoration: "underline",
-                        cursor: "pointer",
+                        cursor: "pointer"
                       }}
                     >
                       Terms of Service,
@@ -210,7 +208,7 @@ function index() {
                     <span
                       style={{
                         textDecoration: "underline",
-                        cursor: "pointer",
+                        cursor: "pointer"
                       }}
                     >
                       Privacy Policy,
@@ -219,7 +217,7 @@ function index() {
                     <span
                       style={{
                         textDecoration: "underline",
-                        cursor: "pointer",
+                        cursor: "pointer"
                       }}
                     >
                       Notification Settings.
@@ -230,7 +228,7 @@ function index() {
                       fontSize: "14px",
                       marginTop: "20px",
                       fontFamily: "'Poppins', sans-serif",
-                      textAlign: "center",
+                      textAlign: "center"
                     }}
                   >
                     Already have an account?{" "}
@@ -238,7 +236,7 @@ function index() {
                       onClick={() => router.push("/login")}
                       style={{
                         textDecoration: "underline",
-                        cursor: "pointer",
+                        cursor: "pointer"
                       }}
                     >
                       Sign In
@@ -258,32 +256,32 @@ function index() {
                       hiddenLabel
                       sx={{
                         height: "60px",
-                        width: "100%",
+                        width: "100%"
                       }}
                       InputLabelProps={{
                         sx: {
                           color: "#003566",
-                          textTransform: "capitalize",
-                        },
+                          textTransform: "capitalize"
+                        }
                       }}
                       InputProps={{
                         sx: {
                           "& fieldset": {
                             borderWidth: "2px",
                             borderRadius: "12px",
-                            borderColor: "#e7e7e9",
+                            borderColor: "#e7e7e9"
                           },
                           "&:focus-within fieldset, &:focus-visible fieldset": {
-                            border: "2px solid #FE7D62!important",
+                            border: "2px solid #FE7D62!important"
                             // borderRadius: 0,
-                          },
-                        },
+                          }
+                        }
                       }}
                       inputProps={{
                         sx: {
                           color: "#FE7D62",
-                          fontSize: "18px",
-                        },
+                          fontSize: "18px"
+                        }
                       }}
                     />
                   </Box>
@@ -295,33 +293,33 @@ function index() {
                       hiddenLabel
                       sx={{
                         height: "60px",
-                        width: "100%",
+                        width: "100%"
                         // borderRadius: "0"
                       }}
                       InputLabelProps={{
                         sx: {
                           color: "#003566",
-                          textTransform: "capitalize",
-                        },
+                          textTransform: "capitalize"
+                        }
                       }}
                       InputProps={{
                         sx: {
                           "& fieldset": {
                             borderColor: "#e7e7e9",
                             borderWidth: "2px",
-                            borderRadius: "12px",
+                            borderRadius: "12px"
                           },
                           "&:focus-within fieldset, &:focus-visible fieldset": {
-                            border: "2px solid #FE7D62!important",
+                            border: "2px solid #FE7D62!important"
                             // borderRadius: 0,
-                          },
-                        },
+                          }
+                        }
                       }}
                       inputProps={{
                         sx: {
                           color: "#FE7D62",
-                          fontSize: "18px",
-                        },
+                          fontSize: "18px"
+                        }
                       }}
                     />
                   </Box>
@@ -334,33 +332,33 @@ function index() {
                     hiddenLabel
                     sx={{
                       height: "60px",
-                      width: "100%",
+                      width: "100%"
                       // borderRadius: "0"
                     }}
                     InputLabelProps={{
                       sx: {
                         color: "#003566",
-                        textTransform: "capitalize",
-                      },
+                        textTransform: "capitalize"
+                      }
                     }}
                     InputProps={{
                       sx: {
                         "& fieldset": {
                           borderColor: "#e7e7e9",
                           borderWidth: "2px",
-                          borderRadius: "12px",
+                          borderRadius: "12px"
                         },
                         "&:focus-within fieldset, &:focus-visible fieldset": {
-                          border: "2px solid #FE7D62!important",
+                          border: "2px solid #FE7D62!important"
                           // borderRadius: 0,
-                        },
-                      },
+                        }
+                      }
                     }}
                     inputProps={{
                       sx: {
                         color: "#FE7D62",
-                        fontSize: "18px",
-                      },
+                        fontSize: "18px"
+                      }
                     }}
                   />
                 </Box>
@@ -372,33 +370,33 @@ function index() {
                     hiddenLabel
                     sx={{
                       height: "60px",
-                      width: "100%",
+                      width: "100%"
                       // borderRadius: "0"
                     }}
                     InputLabelProps={{
                       sx: {
                         color: "#003566",
-                        textTransform: "capitalize",
-                      },
+                        textTransform: "capitalize"
+                      }
                     }}
                     InputProps={{
                       sx: {
                         "& fieldset": {
                           borderColor: "#e7e7e9",
                           borderWidth: "2px",
-                          borderRadius: "12px",
+                          borderRadius: "12px"
                         },
                         "&:focus-within fieldset, &:focus-visible fieldset": {
-                          border: "2px solid #FE7D62!important",
+                          border: "2px solid #FE7D62!important"
                           // borderRadius: 0,
-                        },
-                      },
+                        }
+                      }
                     }}
                     inputProps={{
                       sx: {
                         color: "#FE7D62",
-                        fontSize: "18px",
-                      },
+                        fontSize: "18px"
+                      }
                     }}
                   />
                 </Box>
@@ -408,7 +406,7 @@ function index() {
                     display: "flex",
                     flexDirection: "row",
                     alignItems: "center",
-                    justifyContent: "center",
+                    justifyContent: "center"
                   }}
                 >
                   <Checkbox
@@ -418,13 +416,13 @@ function index() {
                     sx={{
                       "& .MuiSvgIcon-root": {
                         fontSize: 28,
-                        borderRadius: "0",
+                        borderRadius: "0"
                       },
                       borderRadius: "0",
                       padding: 0,
                       display: "flex",
                       paddingTop: "5px",
-                      marginRight: "10px",
+                      marginRight: "10px"
                     }}
                     inputProps={{ "aria-label": "controlled" }}
                   />
@@ -432,14 +430,14 @@ function index() {
                     sx={{
                       fontSize: "14px",
                       marginTop: "20px",
-                      fontFamily: "'Poppins', sans-serif",
+                      fontFamily: "'Poppins', sans-serif"
                     }}
                   >
                     I agree with Dribbble's{" "}
                     <span
                       style={{
                         textDecoration: "underline",
-                        cursor: "pointer",
+                        cursor: "pointer"
                       }}
                     >
                       Terms of Service,
@@ -447,7 +445,7 @@ function index() {
                     <span
                       style={{
                         textDecoration: "underline",
-                        cursor: "pointer",
+                        cursor: "pointer"
                       }}
                     >
                       Privacy Policy
@@ -456,7 +454,7 @@ function index() {
                     <span
                       style={{
                         textDecoration: "underline",
-                        cursor: "pointer",
+                        cursor: "pointer"
                       }}
                     >
                       Notification Settings.
@@ -477,8 +475,8 @@ function index() {
                     textTransform: "none",
                     marginTop: "24px",
                     "&:hover": {
-                      backgroundColor: "black",
-                    },
+                      backgroundColor: "black"
+                    }
                   }}
                 >
                   Create Account
@@ -488,7 +486,7 @@ function index() {
                     fontSize: "14px",
                     marginTop: "20px",
                     fontFamily: "'Poppins', sans-serif",
-                    textAlign: "center",
+                    textAlign: "center"
                   }}
                 >
                   Already have an account?{" "}
@@ -496,7 +494,7 @@ function index() {
                     onClick={() => router.push("/login")}
                     style={{
                       textDecoration: "underline",
-                      cursor: "pointer",
+                      cursor: "pointer"
                     }}
                   >
                     Sign In

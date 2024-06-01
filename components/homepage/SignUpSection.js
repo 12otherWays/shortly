@@ -1,8 +1,9 @@
+"use client";
 import { Box, Button, Typography, useMediaQuery } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import asset1 from "../../../public/asset1.svg";
-import asset2 from "../../../public/asset2.svg";
-import asset3 from "../../../public/asset3.svg";
+import asset1 from "@/public/asset1.svg";
+import asset2 from "@/public/asset2.svg";
+import asset3 from "@/public/asset3.svg";
 import Image from "next/image";
 
 const OutterDiv = styled(Box)(({ theme }) => ({
@@ -13,7 +14,7 @@ const OutterDiv = styled(Box)(({ theme }) => ({
   backgroundImage: `url(${asset2.src}),url(${asset1.src})`,
   backgroundPosition: "90% 90%,0 0",
   backgroundRepeat: "no-repeat,no-repeat",
-  backgroundSize: "8.625rem 8.625rem,15.4375rem 12rem",
+  backgroundSize: "8.625rem 8.625rem,15.4375rem 12rem"
 }));
 
 const InnerDiv = styled(Box)(({ theme }) => ({
@@ -23,11 +24,11 @@ const InnerDiv = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   [theme.breakpoints.down("md")]: {
     padding: "140px 10px",
-    width: "100%",
+    width: "100%"
   },
   [theme.breakpoints.up("lg")]: {
-    width: "1200px",
-  },
+    width: "1200px"
+  }
 }));
 const ParentDiv = styled(Box)(({ theme }) => ({
   width: "70%",
@@ -36,8 +37,8 @@ const ParentDiv = styled(Box)(({ theme }) => ({
   flexDirection: "column",
   position: "relative",
   [theme.breakpoints.down("md")]: {
-    width: "100%",
-  },
+    width: "100%"
+  }
 }));
 
 function SignUpSection() {
@@ -53,10 +54,11 @@ function SignUpSection() {
               textAlign: "center",
               fontWeight: "600",
               color: "white",
-              fontFamily: "'Poppins', sans-serif",
+              fontFamily: "'Poppins', sans-serif"
             }}
           >
-            Start uncovering problems that matter and build impactful products.
+            Effortlessly shorten, share, and track URLs with our easy to use URL
+            shortener.
           </Typography>
           <Box sx={{ display: "flex", gap: "40px", justifyContent: "center" }}>
             <Button
@@ -72,8 +74,8 @@ function SignUpSection() {
                 textTransform: "capitalize",
                 fontFamily: "'Poppins', sans-serif",
                 "&:hover": {
-                  backgroundColor: "white",
-                },
+                  backgroundColor: "white"
+                }
               }}
             >
               Sign Up
@@ -91,8 +93,8 @@ function SignUpSection() {
                 textTransform: "capitalize",
                 fontFamily: "'Poppins', sans-serif",
                 "&:hover": {
-                  borderColor: "white",
-                },
+                  borderColor: "white"
+                }
               }}
             >
               Book a tour

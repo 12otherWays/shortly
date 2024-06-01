@@ -1,7 +1,8 @@
+"use client";
 import { Box, Button, Drawer, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
@@ -15,7 +16,7 @@ const OutterDiv = styled(Box)(({ theme }) => ({
   width: "100%",
   backdropFilter: "blur(12px)",
   backgroundColor: "rgba(249, 250, 251, 0.3)",
-  zIndex: 1000,
+  zIndex: 1000
 }));
 const InnerDiv = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -25,11 +26,11 @@ const InnerDiv = styled(Box)(({ theme }) => ({
   alignItems: "center",
   [theme.breakpoints.down("md")]: {
     padding: "10px 40px",
-    width: "95%",
+    width: "95%"
   },
   [theme.breakpoints.up("lg")]: {
-    width: "1200px",
-  },
+    width: "1200px"
+  }
 }));
 const ParentDiv = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -38,11 +39,11 @@ const ParentDiv = styled(Box)(({ theme }) => ({
   alignItems: "center",
   gap: "10px",
   [theme.breakpoints.up("md")]: {
-    gap: "15px",
+    gap: "15px"
   },
   [theme.breakpoints.up("lg")]: {
-    gap: "30px",
-  },
+    gap: "30px"
+  }
 }));
 const LinkDiv = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -51,22 +52,22 @@ const LinkDiv = styled(Box)(({ theme }) => ({
   alignItems: "center",
   gap: "10px",
   [theme.breakpoints.up("md")]: {
-    gap: "15px",
+    gap: "15px"
   },
   [theme.breakpoints.up("lg")]: {
-    gap: "30px",
-  },
+    gap: "30px"
+  }
 }));
 const ButtonDiv = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "row",
   gap: "10px",
   [theme.breakpoints.up("md")]: {
-    gap: "15px",
+    gap: "15px"
   },
   [theme.breakpoints.up("lg")]: {
-    gap: "30px",
-  },
+    gap: "30px"
+  }
 }));
 const Text = styled(Button)(({ theme }) => ({
   color: "#79808C",
@@ -79,8 +80,8 @@ const Text = styled(Button)(({ theme }) => ({
   fontSize: "14px",
   fontFamily: "'Poppins', sans-serif",
   "&:hover": {
-    color: "black",
-  },
+    color: "black"
+  }
 }));
 const MainText = styled(Typography)(({ theme }) => ({
   display: "inline-block",
@@ -92,12 +93,12 @@ const MainText = styled(Typography)(({ theme }) => ({
   textAlign: "center",
   [theme.breakpoints.down("lg")]: {
     fontSize: "20px",
-    lineHeight: "20px",
+    lineHeight: "20px"
   },
   [theme.breakpoints.down("md")]: {
     fontSize: "16px",
-    lineHeight: "16px",
-  },
+    lineHeight: "16px"
+  }
 }));
 
 function Header() {
@@ -130,9 +131,15 @@ function Header() {
         {matches ? (
           <ParentDiv>
             <LinkDiv>
-              <Text>docs</Text>
-              <Text>pricing</Text>
-              <Text>guide</Text>
+              <a href="/coming-soon" style={{ textDecoration: "none" }}>
+                <Text>docs</Text>
+              </a>
+              <a href="/coming-soon" style={{ textDecoration: "none" }}>
+                <Text>pricing</Text>
+              </a>
+              <a href="/coming-soon" style={{ textDecoration: "none" }}>
+                <Text>guide</Text>{" "}
+              </a>
             </LinkDiv>
             <ButtonDiv>
               <Button
@@ -148,8 +155,8 @@ function Header() {
                   color: "#FE7D62",
                   "&:hover": {
                     borderColor: "#e67057",
-                    backgroundColor: "rgba(230, 112, 87, 0.1)",
-                  },
+                    backgroundColor: "rgba(230, 112, 87, 0.1)"
+                  }
                 }}
               >
                 log in
@@ -165,8 +172,8 @@ function Header() {
                   textTransform: "capitalize",
                   backgroundColor: "#FE7D62",
                   "&:hover": {
-                    backgroundColor: "#e67057",
-                  },
+                    backgroundColor: "#e67057"
+                  }
                 }}
               >
                 start up
@@ -188,7 +195,7 @@ function Header() {
                 display: "flex",
                 flexDirection: "column",
                 textAlign: "start",
-                gap: "30px",
+                gap: "30px"
               }}
             >
               <Text
@@ -196,7 +203,7 @@ function Header() {
                   fontSize: "20px",
                   display: "flex",
                   height: "40px",
-                  alignItems: "center",
+                  alignItems: "center"
                 }}
               >
                 docs
@@ -206,7 +213,7 @@ function Header() {
                   fontSize: "20px",
                   display: "flex",
                   alignItems: "center",
-                  height: "40px",
+                  height: "40px"
                 }}
               >
                 pricing
@@ -216,7 +223,7 @@ function Header() {
                   fontSize: "20px",
                   display: "flex",
                   alignItems: "center",
-                  height: "40px",
+                  height: "40px"
                 }}
               >
                 guide
@@ -234,8 +241,8 @@ function Header() {
                   color: "#FE7D62",
                   "&:hover": {
                     borderColor: "#e67057",
-                    backgroundColor: "rgba(230, 112, 87, 0.1)",
-                  },
+                    backgroundColor: "rgba(230, 112, 87, 0.1)"
+                  }
                 }}
               >
                 log in
@@ -251,8 +258,8 @@ function Header() {
                   textTransform: "capitalize",
                   backgroundColor: "#FE7D62",
                   "&:hover": {
-                    backgroundColor: "#e67057",
-                  },
+                    backgroundColor: "#e67057"
+                  }
                 }}
               >
                 start up

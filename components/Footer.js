@@ -1,12 +1,12 @@
+"use client";
 import { Box, Divider, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import Image from "next/image";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
 
 const OutterDiv = styled(Box)(({ theme }) => ({
   display: "flex",
-  justifyContent: "center",
+  justifyContent: "center"
 }));
 
 const InnerDiv = styled(Box)(({ theme }) => ({
@@ -16,29 +16,29 @@ const InnerDiv = styled(Box)(({ theme }) => ({
   flexDirection: "column",
   [theme.breakpoints.down("md")]: {
     padding: "80px 40px",
-    width: "90%",
+    width: "90%"
   },
   [theme.breakpoints.down("sm")]: {
     padding: "80px 10px",
-    width: "90%",
+    width: "90%"
   },
   [theme.breakpoints.up("lg")]: {
-    width: "1200px",
-  },
+    width: "1200px"
+  }
 }));
 const ParentDiv = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "row",
   marginBottom: "24px",
   [theme.breakpoints.down("sm")]: {
-    flexDirection: "column",
-  },
+    flexDirection: "column"
+  }
 }));
 const LeftDiv = styled(Box)(({ theme }) => ({
   width: "50%",
   [theme.breakpoints.down("sm")]: {
-    width: "100%",
-  },
+    width: "100%"
+  }
 }));
 const RightDiv = styled(Box)(({ theme }) => ({
   width: "50%",
@@ -47,8 +47,8 @@ const RightDiv = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     width: "100%",
     paddingTop: "40px",
-    justifyContent: "flex-start",
-  },
+    justifyContent: "flex-start"
+  }
 }));
 const Heading = styled(Typography)(({ theme }) => ({
   fontSize: "16px",
@@ -56,7 +56,7 @@ const Heading = styled(Typography)(({ theme }) => ({
   fontWeight: 600,
   marginBottom: "16px",
   textTransform: "capitalize",
-  fontFamily: "'Poppins', sans-serif",
+  fontFamily: "'Poppins', sans-serif"
 }));
 const Text = styled(Typography)(({ theme }) => ({
   color: "#79808C",
@@ -66,8 +66,8 @@ const Text = styled(Typography)(({ theme }) => ({
   letterSpacing: "0.3px",
   fontFamily: "'Poppins', sans-serif",
   "&:hover": {
-    color: "black",
-  },
+    color: "black"
+  }
 }));
 
 function Footer() {
@@ -83,7 +83,7 @@ function Footer() {
                 sx={{
                   textTransform: "capitalize",
                   fontSize: "24px",
-                  fontWeight: "600",
+                  fontWeight: "600"
                 }}
               >
                 {company_name}
@@ -93,7 +93,7 @@ function Footer() {
               sx={{
                 color: "black",
                 textTransform: "none",
-                fontFamily: "'Montserrat', sans-serif",
+                fontFamily: "'Montserrat', sans-serif"
               }}
             >
               The email platform for SaaS
@@ -103,8 +103,8 @@ function Footer() {
                 sx={{
                   color: "#A5ACB7",
                   "&:hover": {
-                    color: "#0073B1",
-                  },
+                    color: "#0073B1"
+                  }
                 }}
               />
 
@@ -112,8 +112,8 @@ function Footer() {
                 sx={{
                   color: "#A5ACB7",
                   "&:hover": {
-                    color: "#1C96E9",
-                  },
+                    color: "#1C96E9"
+                  }
                 }}
               />
             </Box>
@@ -135,14 +135,14 @@ function Footer() {
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
-            marginTop: "24px",
+            marginTop: "24px"
           }}
         >
           <Box
             sx={{
               display: "flex",
               flexDirection: "row",
-              gap: "40px",
+              gap: "40px"
             }}
           >
             <Text sx={{ fontSize: "14px", textTransform: "capitalize" }}>
@@ -157,8 +157,8 @@ function Footer() {
               fontSize: "14px",
               textTransform: "capitalize",
               "&:hover": {
-                color: "#79808C",
-              },
+                color: "#79808C"
+              }
             }}
           >
             &#169; 2023 {company_name}

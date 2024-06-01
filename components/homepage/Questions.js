@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
@@ -8,7 +9,7 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 
 const OutterDiv = styled(Box)(({ theme }) => ({
   display: "flex",
-  justifyContent: "center",
+  justifyContent: "center"
 }));
 
 const InnerDiv = styled(Box)(({ theme }) => ({
@@ -19,29 +20,29 @@ const InnerDiv = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down("md")]: {
     padding: "80px 40px",
     flexDirection: "column",
-    width: "100%",
+    width: "100%"
   },
   [theme.breakpoints.down("sm")]: {
     padding: "80px 10px",
-    width: "100%",
+    width: "100%"
   },
   [theme.breakpoints.up("lg")]: {
-    width: "1200px",
-  },
+    width: "1200px"
+  }
 }));
 
 const LeftDiv = styled(Box)(({ theme }) => ({
   width: "40%",
   [theme.breakpoints.down("md")]: {
-    width: "100%",
-  },
+    width: "100%"
+  }
 }));
 const RightDiv = styled(Box)(({ theme }) => ({
   width: "58%",
   [theme.breakpoints.down("md")]: {
     marginTop: "60px",
-    width: "100%",
-  },
+    width: "100%"
+  }
 }));
 const MainText = styled(Typography)(({ theme }) => ({
   fontSize: "64px",
@@ -52,12 +53,12 @@ const MainText = styled(Typography)(({ theme }) => ({
   marginBottom: "24px",
   [theme.breakpoints.down("lg")]: {
     fontSize: "48px",
-    lineHeight: "48px",
+    lineHeight: "48px"
   },
   [theme.breakpoints.down("md")]: {
     fontSize: "36px",
-    lineHeight: "36px",
-  },
+    lineHeight: "36px"
+  }
 }));
 
 function Questions() {
@@ -77,7 +78,7 @@ function Questions() {
               textTransform: "capitalize",
               fontFamily: "'Poppins', sans-serif",
               fontWeight: 300,
-              letterSpacing: "0.8px",
+              letterSpacing: "0.8px"
             }}
           >
             Everything you need to know about our Charge email outreach tool and
@@ -89,7 +90,7 @@ function Questions() {
             sx={{
               backgroundColor: "transparent",
               border: "none",
-              boxShadow: "none",
+              boxShadow: "none"
             }}
             expanded={expanded === "panel1"}
             onChange={handleChange("panel1")}
@@ -100,7 +101,7 @@ function Questions() {
               id="panel1bh-header"
               sx={{
                 height: "88px",
-                borderBottom: "1px solid #EBEBEB",
+                borderBottom: "1px solid #EBEBEB"
               }}
             >
               <Typography
@@ -110,10 +111,10 @@ function Questions() {
                   fontSize: "18px",
                   fontWeight: "500",
                   fontFamily: "'Poppins', sans-serif",
-                  lineHeight: "25px",
+                  lineHeight: "25px"
                 }}
               >
-                Can I change my plan later?
+                What is a URL shortener?
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
@@ -123,12 +124,11 @@ function Questions() {
                   fontFamily: "'Poppins', sans-serif",
                   lineHeight: "25px",
                   fontWeight: 300,
-                  letterSpacing: "0.8px",
+                  letterSpacing: "0.8px"
                 }}
               >
-                You can change your subscription plan at any time through the
-                Charge Stripe portal, accessible through the Charge extension
-                menu.
+                A URL shortener, or a link shortener, simplifies long and
+                complicated URLs into brief, comprehensible links.
               </Typography>
             </AccordionDetails>
           </Accordion>
@@ -138,8 +138,8 @@ function Questions() {
               border: "none",
               boxShadow: "none",
               "&::before": {
-                height: "0px",
-              },
+                height: "0px"
+              }
             }}
             expanded={expanded === "panel2"}
             onChange={handleChange("panel2")}
@@ -150,7 +150,7 @@ function Questions() {
               id="panel1bh-header"
               sx={{
                 height: "88px",
-                borderBottom: "1px solid #EBEBEB",
+                borderBottom: "1px solid #EBEBEB"
               }}
             >
               <Typography
@@ -160,10 +160,10 @@ function Questions() {
                   fontSize: "18px",
                   fontWeight: "500",
                   fontFamily: "'Poppins', sans-serif",
-                  lineHeight: "25px",
+                  lineHeight: "25px"
                 }}
               >
-                What is your cancellation policy?
+                How do I change a long URL to a short URL?
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
@@ -173,14 +173,14 @@ function Questions() {
                   fontFamily: "'Poppins', sans-serif",
                   lineHeight: "25px",
                   fontWeight: 300,
-                  letterSpacing: "0.8px",
+                  letterSpacing: "0.8px"
                 }}
               >
-                You may cancel your Subscription renewal either through your
-                account settings and Stripe portal or by contacting us. You will
-                not receive a refund for the fees you already paid for your
-                current subscription period and you will be able to access the
-                service until the end of your current subscription period.
+                To shorten a URL, you'll need a service like RB.GY. First, copy
+                the long URL you want to shorten. Then, access the URL shortener
+                tool. Paste your long URL into the appropriate field, then click
+                "Shorten URL." RB.GY will instantly generate a shortened version
+                of your original URL, which leads to the same page when clicked.
               </Typography>
             </AccordionDetails>
           </Accordion>
@@ -190,8 +190,8 @@ function Questions() {
               border: "none",
               boxShadow: "none",
               "&::before": {
-                height: "0px",
-              },
+                height: "0px"
+              }
             }}
             expanded={expanded === "panel3"}
             onChange={handleChange("panel3")}
@@ -202,7 +202,7 @@ function Questions() {
               id="panel1bh-header"
               sx={{
                 height: "88px",
-                borderBottom: "1px solid #EBEBEB",
+                borderBottom: "1px solid #EBEBEB"
               }}
             >
               <Typography
@@ -212,10 +212,10 @@ function Questions() {
                   fontSize: "18px",
                   fontWeight: "500",
                   fontFamily: "'Poppins', sans-serif",
-                  lineHeight: "25px",
+                  lineHeight: "25px"
                 }}
               >
-                General settings
+                What are the benefits of a short URL?
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
@@ -225,11 +225,18 @@ function Questions() {
                   fontFamily: "'Poppins', sans-serif",
                   lineHeight: "25px",
                   fontWeight: 300,
-                  letterSpacing: "0.8px",
+                  letterSpacing: "0.8px"
                 }}
               >
-                Nulla facilisi. Phasellus sollicitudin nulla et quam mattis
-                feugiat. Aliquam eget maximus est, id dignissim quam.
+                When you choose to shorten a URL, you're optimizing your digital
+                content in several ways. Short URLs are more manageable and
+                tidy, fitting neatly into character-limited spaces like tweets
+                or Instagram bios. They are also simpler to remember and type
+                manually. Moreover, many URL shorteners include tracking
+                capabilities, offering vital data on link engagement – a crucial
+                tool for businesses and marketing campaigns. Finally, short URLs
+                can be customized for increased brand recognition and user
+                trust.
               </Typography>
             </AccordionDetails>
           </Accordion>
@@ -239,8 +246,8 @@ function Questions() {
               border: "none",
               boxShadow: "none",
               "&::before": {
-                height: "0px",
-              },
+                height: "0px"
+              }
             }}
             expanded={expanded === "panel4"}
             onChange={handleChange("panel4")}
@@ -251,7 +258,7 @@ function Questions() {
               id="panel1bh-header"
               sx={{
                 height: "88px",
-                borderBottom: "1px solid #EBEBEB",
+                borderBottom: "1px solid #EBEBEB"
               }}
             >
               <Typography
@@ -261,10 +268,10 @@ function Questions() {
                   fontSize: "18px",
                   fontWeight: "500",
                   fontFamily: "'Poppins', sans-serif",
-                  lineHeight: "25px",
+                  lineHeight: "25px"
                 }}
               >
-                Can other info be added to an invoice?
+                Can I use a domain I already own?
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
@@ -274,11 +281,14 @@ function Questions() {
                   fontFamily: "'Poppins', sans-serif",
                   lineHeight: "25px",
                   fontWeight: 300,
-                  letterSpacing: "0.8px",
+                  letterSpacing: "0.8px"
                 }}
               >
-                At the moment, you need to contact our support team for a custom
-                invoice for our email outreach solution for Outlook & Exchange.
+                Absolutely! Personalization, flexibility, and control are what
+                Shortly is all about. With each of our paid plans, you can
+                register or connect at least one top-level domain
+                (your-domain.com) or subdomains (sub.your-domain.com) that you
+                already own to create your branded short links using Shortly.
               </Typography>
             </AccordionDetails>
           </Accordion>
@@ -288,8 +298,8 @@ function Questions() {
               border: "none",
               boxShadow: "none",
               "&::before": {
-                height: "0px",
-              },
+                height: "0px"
+              }
             }}
             expanded={expanded === "panel5"}
             onChange={handleChange("panel5")}
@@ -300,7 +310,7 @@ function Questions() {
               id="panel1bh-header"
               sx={{
                 height: "88px",
-                borderBottom: "1px solid #EBEBEB",
+                borderBottom: "1px solid #EBEBEB"
               }}
             >
               <Typography
@@ -310,7 +320,7 @@ function Questions() {
                   fontSize: "18px",
                   fontWeight: "500",
                   fontFamily: "'Poppins', sans-serif",
-                  lineHeight: "25px",
+                  lineHeight: "25px"
                 }}
               >
                 How does billing work?
@@ -323,7 +333,7 @@ function Questions() {
                   fontFamily: "'Poppins', sans-serif",
                   lineHeight: "25px",
                   fontWeight: 300,
-                  letterSpacing: "0.8px",
+                  letterSpacing: "0.8px"
                 }}
               >
                 You shall provide the company with accurate and complete billing
@@ -336,7 +346,7 @@ function Questions() {
                   fontFamily: "'Poppins', sans-serif",
                   lineHeight: "25px",
                   fontWeight: 300,
-                  letterSpacing: "0.8px",
+                  letterSpacing: "0.8px"
                 }}
               >
                 Should automatic billing fail to occur for any reason, the
