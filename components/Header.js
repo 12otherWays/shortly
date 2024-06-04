@@ -1,5 +1,5 @@
 "use client";
-import { Box, Button, Drawer, Typography } from "@mui/material";
+import { Box, Button, Drawer, Link, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 import { useRouter } from "next/navigation";
@@ -45,19 +45,6 @@ const ParentDiv = styled(Box)(({ theme }) => ({
     gap: "30px"
   }
 }));
-const LinkDiv = styled(Box)(({ theme }) => ({
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "center",
-  alignItems: "center",
-  gap: "10px",
-  [theme.breakpoints.up("md")]: {
-    gap: "15px"
-  },
-  [theme.breakpoints.up("lg")]: {
-    gap: "30px"
-  }
-}));
 const ButtonDiv = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "row",
@@ -69,23 +56,12 @@ const ButtonDiv = styled(Box)(({ theme }) => ({
     gap: "30px"
   }
 }));
-const Text = styled(Button)(({ theme }) => ({
-  color: "#79808C",
-  height: "30px",
-  borderRadius: "6px",
-  textTransform: "capitalize",
-  fontWeight: 500,
-  display: "flex",
-  letterSpacing: "0.3px",
-  fontSize: "14px",
-  fontFamily: "'Poppins', sans-serif",
-  "&:hover": {
-    color: "black"
-  }
-}));
-const MainText = styled(Typography)(({ theme }) => ({
+const MainText = styled(Link)(({ theme }) => ({
   display: "inline-block",
+  cursor: "pointer",
   fontSize: "24px",
+  color: "black",
+  textDecoration: "none",
   textTransform: "capitalize",
   fontWeight: "900",
   fontFamily: "'Montserrat', sans-serif",
@@ -110,7 +86,7 @@ function Header() {
     <OutterDiv>
       <InnerDiv>
         <Box>
-          <MainText>Shortly</MainText>
+          <MainText href="/">Shortly</MainText>
         </Box>
         {!matches &&
           (!clicked ? (
@@ -187,36 +163,6 @@ function Header() {
                 gap: "30px"
               }}
             >
-              <Text
-                sx={{
-                  fontSize: "20px",
-                  display: "flex",
-                  height: "40px",
-                  alignItems: "center"
-                }}
-              >
-                docs
-              </Text>
-              <Text
-                sx={{
-                  fontSize: "20px",
-                  display: "flex",
-                  alignItems: "center",
-                  height: "40px"
-                }}
-              >
-                pricing
-              </Text>
-              <Text
-                sx={{
-                  fontSize: "20px",
-                  display: "flex",
-                  alignItems: "center",
-                  height: "40px"
-                }}
-              >
-                guide
-              </Text>
               <Button
                 onClick={() => router.push("/login")}
                 variant="outlined"

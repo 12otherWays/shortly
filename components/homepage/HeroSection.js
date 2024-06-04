@@ -119,8 +119,8 @@ function HeroSection() {
   const [linkOrCode, setLinkOrCode] = useState("link");
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("some error");
-  const [focus, setFocus] = useState(null);
-  const [btnClicked, setBtnClicked] = useState(false);
+  // const [focus, setFocus] = useState(null);
+  // const [btnClicked, setBtnClicked] = useState(false);
   const [response, setResponse] = useState(null);
   const [qrCode, setQrCode] = useState(null);
   const thousandWidth = useMediaQuery("(min-width:1000px)");
@@ -150,62 +150,65 @@ function HeroSection() {
   const changePreference = (str) => {
     setLinkOrCode(str);
   };
-  const handleFocus = () => {
-    setFocus(true);
-  };
-  const handleFocusOut = () => {
-    setFocus(false);
-    setShowAlert(false);
-  };
-  const isUrlValid = (string) => {
-    try {
-      new URL(string);
-      return true;
-    } catch (err) {
-      return false;
-    }
-  };
+  // const handleFocus = () => {
+  //   setFocus(true);
+  // };
+  // const handleFocusOut = () => {
+  //   setFocus(false);
+  //   setShowAlert(false);
+  // };
+  // const isUrlValid = (string) => {
+  //   try {
+  //     new URL(string);
+  //     return true;
+  //   } catch (err) {
+  //     return false;
+  //   }
+  // };
   const submitLink = (str) => {
-    if (focus || btnClicked) {
-      if (isUrlValid(str)) {
-        if (linkOrCode === "link") {
-          getShortlyFxn(str);
-        } else if (linkOrCode === "code") {
-          callForQRcode(str);
-        }
-      } else if (url.length <= 0) {
-        setAlertMessage("URL is Missing");
-        setShowAlert(true);
-      } else if (!isUrlValid(str)) {
-        setAlertMessage("URL is wrong");
-        setShowAlert(true);
-      }
-    }
+    setAlertMessage("Sorry, Site is down.");
+    setShowAlert(true);
+
+    // if (focus || btnClicked) {
+    //   if (isUrlValid(str)) {
+    //     if (linkOrCode === "link") {
+    //       getShortlyFxn(str);
+    //     } else if (linkOrCode === "code") {
+    //       callForQRcode(str);
+    //     }
+    //   } else if (url.length <= 0) {
+    //     setAlertMessage("URL is Missing");
+    //     setShowAlert(true);
+    //   } else if (!isUrlValid(str)) {
+    //     setAlertMessage("URL is wrong");
+    //     setShowAlert(true);
+    //   }
+    // }
   };
-  const getShortlyFxn = async (str) => {
-    const data = { url: `${str}` };
-    const res = await getShortlyLinkApi(data);
-    if (res.status === "success") {
-      setResponse(`https://www.shortly/${res.data.shortId}.com`);
-    }
-  };
-  const generateQR = async (text) => {
-    try {
-      let data = await QRCode.toDataURL(text);
-      return data;
-    } catch (err) {
-      console.error(err);
-    }
-  };
-  const callForQRcode = async (str) => {
-    let da = await generateQR(str);
-    setQrCode(da);
-  };
-  useEffect(() => {
-    if (focus) {
-      submitLink(url);
-    }
-  }, [btnClicked]);
+  // const getShortlyFxn = async (str) => {
+  //   const data = { url: `${str}` };
+  //   const res = await getShortlyLinkApi(data);
+  //   if (res.status === "success") {
+  //     setResponse(`https://www.shortly/${res.data.shortId}.com`);
+  //   }
+  // };
+  // const generateQR = async (text) => {
+  //   try {
+  //     let data = await QRCode.toDataURL(text);
+  //     return data;
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
+  // const callForQRcode = async (str) => {
+  //   let da = await generateQR(str);
+  //   setQrCode(da);
+  // };
+  // useEffect(() => {
+  //   if (focus) {
+  //     submitLink(url);
+  //   }
+  // }, [btnClicked]);
 
   return (
     <OutterDiv>
@@ -458,7 +461,7 @@ function HeroSection() {
                     >
                       <IconButton
                         onClick={() => {
-                          setBtnClicked(true);
+                          // setBtnClicked(true);
                           submitLink(url);
                         }}
                         type="button"
