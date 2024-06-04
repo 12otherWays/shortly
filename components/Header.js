@@ -130,17 +130,6 @@ function Header() {
           ))}
         {matches ? (
           <ParentDiv>
-            <LinkDiv>
-              <a href="/coming-soon" style={{ textDecoration: "none" }}>
-                <Text>docs</Text>
-              </a>
-              <a href="/coming-soon" style={{ textDecoration: "none" }}>
-                <Text>pricing</Text>
-              </a>
-              <a href="/coming-soon" style={{ textDecoration: "none" }}>
-                <Text>guide</Text>{" "}
-              </a>
-            </LinkDiv>
             <ButtonDiv>
               <Button
                 onClick={() => router.push("/login")}
